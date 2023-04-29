@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/api/customer/signup"
+const url = "http://192.168.1.5:5500/api/customer/signup"
 
 function createResponedDisplay(json){
     //----------------CREATE NEW DISPLAY------------------
