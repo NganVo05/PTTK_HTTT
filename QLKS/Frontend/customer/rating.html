@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GROUP08 HOMEPAGE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="./css/booking.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body,h1 {font-family: "Raleway", sans-serif}
+    body, html {height: 100%}
+    .bgimg {
+      min-height: 100%;
+      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .panel {
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #333333;
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('background.jpg');
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .button-wrapper {
+      width: 50%;
+      height: 30%;
+      display:flex;
+      justify-content: center;
+      align-items: center; 
+    }
+    .button-80 {
+      width: 180pt;
+      height: 50pt;
+      margin-top: 120pt;
+      left: 0;
+      text-align:center;
+      background: linear-gradient(rgba(180, 200, 240, 0.8), rgba(180, 200, 240, 0.8));
+      transition: background 0.3s ease;
+    }
+    .button-80:hover {
+      background: linear-gradient(rgba(120, 150, 200, 0.9), rgba(120, 150, 200, 0.9));
+    }
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .rate {
+      position: absolute;
+      height: 100px;
+      margin-bottom: 120pt;
+      margin-left: 17pt;
+    }
+    .rate:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+    }
+    .rate:not(:checked) > label {
+      float:right;
+      width:1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:150px;
+      color:#ccc;
+    }
+    .rate:not(:checked) > label:before {
+      content: '★ ';
+    }
+    .rate > input:checked ~ label {
+      color: #ffc700;    
+    }
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+      color: #deb217;  
+    }
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+      color: #c59b08;
+    }
+  </style>
+</head>
+<body>
+  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div id = "welcome" class="w3-display-topleft w3-padding-large w3-xlarge">
+      <!-- announce -->
+    </div>
+    <div class="panel">
+      <h1 class="w3-jumbo w3-animate-top" style="text-align:center;position:fixed;top:30pt">Mức độ hài lòng của bạn với dịch vụ</h1>
+      <hr class="w3-border-grey" style="width:100%;position:fixed;top:90pt">
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+      <div class="button-wrapper" style="position:fixed;top: 200pt">  
+        <button class="button-80" role="button" onclick="location.href='/customer/bookingRoom.html'">Đánh giá</button>
+        <!-- <button class="button-80"  role="button" onclick="location.href='/customer/groupBooking.html'">ĐOÀN KHÁCH</button> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

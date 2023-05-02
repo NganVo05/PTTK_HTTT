@@ -19,7 +19,7 @@ function start() {
   // id = document.getElementById('store').value;
   id = jsoncustomer.MAKH // update later
   document.getElementById("KhachHang").innerHTML = id; // update later
-  const url = `http://localhost:8080/api/customer/order/${id}`;
+  const url = `http://localhost:5080/api/customer/order/${id}`;
   // alert(url);
 
   fetch(url)

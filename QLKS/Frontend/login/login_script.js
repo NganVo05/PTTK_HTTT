@@ -9,7 +9,7 @@ function getData(form) {
 function partnerLogin(){
     console.log(partnerLogin)
     url = ""
-    url = url + "http://localhost:8080/api/login/partner"
+    url = url + "http://localhost:5080/api/login/partner"
     url_destination = ""
     url_destination = url_destination + "/partner/"
     role = ""
@@ -18,7 +18,7 @@ function partnerLogin(){
 function shipperLogin(){
     console.log(shipperLogin)
     url = ""
-    url = url + "http://localhost:8080/api/login/driver"
+    url = url + "http://localhost:5080/api/login/driver"
     url_destination = ""
     url_destination = url_destination + "/driver/homepage"
     role = ""
@@ -27,7 +27,7 @@ function shipperLogin(){
 function staffLogin(){
     console.log(staffLogin)
     url = ""
-    url = url + "http://localhost:8080/api/login/staff"
+    url = url + "http://localhost:5080/api/login/staff"
     url_destination = ""
     url_destination = url_destination + "/staff/homepage"
     role = ""

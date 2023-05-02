@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>  
+    <title>Danh sách phòng</title>
+    <meta charset="utf-8">
+    <!-- external -->
+    <link rel="stylesheet" href="./css/bookingRoom.css"> 
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./js/roomStatus.js"> </script>
+</head>
+
+<body>
+    <form action="" >
+        <!--  Details -->
+        <div class="form-group">
+          <h2 class="heading" style="font-weight: bold;">Chi tiết</h2>
+          <div class="grid">
+            <div class="col-1-2 col-1-2-sm" style="padding-right: 10px;" >
+                <div class="controls">
+                <input type="date" id="arrive" class="floatLabel" name="arrive" value="<?php echo date('Y-m-d'); ?>" required>
+                <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đến</label>
+                </div>      
+            </div>
+            <div class="col-1-2 col-1-2-sm">
+                <div class="controls">
+                <input type="date" id="depart" class="floatLabel" name="depart" value="<?php echo date('Y-m-d'); ?>" required>
+                <label for="depart" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đi</label>
+                </div>      
+            </div>
+            
+          </div>
+          <div class="grid">
+            <div class="col-1-2 col-1-2-sm" style="padding-right: 10px;" >
+              <div class="controls">
+                  <i class="fa fa-sort"></i>
+                  <select name="type-of-rooms" class="floatLabel" required>
+                  <option value="" selected></option>
+                  <option value="guaranteed-reservation">Đảm bảo</option>
+                  <option value="non-guaranteed-reservation">Không đảm bảo</option>
+                  </select>
+                  <label for="fruit">Loại phòng</label>
+              </div>     
+            </div>
+
+            <div class="col-1-2 col-1-2-sm">
+                <div class="controls">
+                <i class="fa fa-sort"></i>
+                <input type="number" id="day" class="floatLabel" name="day" readonly>
+                <label for="fruit"><i class="fa fa-male"></i>&nbsp;&nbsp;Số ngày</label>
+                </div>      
+            </div>
+            
+           </div>
+           <div class="grid">
+            <div class="col-1-2">
+              <div class="controls" style="padding-right: 10px;" >
+                <button type="button" value="booking" >Đặt phòng</button>
+              </div>
+            </div> 
+            <div class="col-1-2">
+              <div class="controls">
+                <button type="button" value="roomList" >Tra cứu</button>
+              </div>          
+            </div>
+          </div>  
+        </div> <!-- /.form-group -->
+    </form>
+</body>

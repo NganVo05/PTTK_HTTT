@@ -8,9 +8,9 @@ function getData(form) {
 }
 function Login(){
     url = ""
-    url = url + "http://localhost:8080/api/login/customer"
+    url = url + "http://localhost:5080/api/login/customer"
     url_destination = ""
-    url_destination = url_destination + "/customer/index.html"
+    url_destination = url_destination + "/customer/booking.html"
     role = ""
     role = role + "customer"
 }
@@ -18,9 +18,12 @@ function Login(){
 const formEl = document.querySelector("form");
 formEl.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const jsonObject = getData(e.target);
-    console.log(jsonObject)
-    console.log(url)
+    // const jsonObject = getData(e.target);
+    // console.log(jsonObject)
+    // console.log(url)
+    let jsonObject = {};
+    jsonObject.username = "137-708-1256";
+    jsonObject.password = "315S026139QT";
     try {
         const response = await fetch(url, {
         method: "POST",
