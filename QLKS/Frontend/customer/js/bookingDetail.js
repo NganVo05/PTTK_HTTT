@@ -1,3 +1,10 @@
+const toText= {
+  "guaranteed-reservation": "Đảm bảo",
+  "non-guaranteed-reservation": "Không đảm bảo"
+};
+
+var bookingDetail = JSON.parse(localStorage.getItem('bookingDetail') || '[]');
+
 $(document).ready(function() {
   var arriveInput = $("#arrive");
   var departInput = $("#depart");

@@ -9,3 +9,6 @@ localStorage.setItem('ifNeedCall', JSON.stringify(ifNeedCall));
 
 var store = "";
 localStorage.setItem('store', JSON.stringify(store));
+
+var bookingDetail = "";
+localStorage.setItem('bookingDetail', JSON.stringify(bookingDetail));

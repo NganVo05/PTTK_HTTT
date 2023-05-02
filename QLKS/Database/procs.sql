@@ -3,6 +3,7 @@ GO
 
 update phong set gia = 600000
 where loaiphong = 'Không đảm bảo';
+
 update phong set gia = 1000000
 where loaiphong = 'Đảm bảo';
 
@@ -31,15 +32,15 @@ AS
 BEGIN TRAN
 	IF NOT EXISTS (select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Arrive between ngayden and ngaydi)))
 		BEGIN
-			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR'
-			ROLLBACK TRAN
-			RETURN 0
+			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
+			ROLLBACK TRAN;
+			RETURN;
 		END
-	IF NOT EXISTS (select maphong from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Depart between ngayden and ngaydi)))
+	IF NOT EXISTS (select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Depart between ngayden and ngaydi)))
 		BEGIN
-			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR'
-			ROLLBACK TRAN
-			RETURN 0
+			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
+			ROLLBACK TRAN;
+			RETURN;
 		END
 	
 	--DECLARE @TEMP TABLE (MAPHONG VARCHAR(8))
@@ -70,20 +71,40 @@ BEGIN TRAN
 	) T ON P.MAPHONG = T.MAPHONG
 	WHERE T.MAPHONG IS NULL AND P.LOAIPHONG = @Type
 	ORDER BY P.MAPHONG ASC
-
 	SELECT 'The available rooms for the selected dates were successfully retrieved.' AS '1'
 COMMIT TRAN
-RETURN 1
 GO
 
 --DECLARE @Arrive Date = GETDATE();
 --DECLARE @Depart Date = DATEADD(day, 11, @Arrive);
---EXEC USP_AvailableRoom @Arrive, @Arrive, 'Không đảm bảo';
---select maphong from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Depart between ngayden and ngaydi))
+--EXEC USP_AvailableRoom '2023-04-13', '2023-04-13', 'Đảm bảo';
+--select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = 'Không đảm bảo';
+--select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = 'Đảm bảo';
+--select maphong from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where '2023-05-13' between ngayden and ngaydi))
 --select maphong from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Arrive between ngayden and ngaydi))
 
+--Đánh giá
+--DROP PROC IF EXISTS USP_ThemDanhGiaChoPhong
+--GO
 
+CREATE 
+--ALTER
+PROCEDURE dbo.USP_ThemDanhGiaChoPhong
+    @mapdk varchar(15),
+    @diem float
+AS
+BEGIN TRAN;    
+    -- Insert danh gia for each phong in the phieu dat phong
+    INSERT INTO dbo.DANHGIA (MAPHONG, MAKH, DIEM)
+    SELECT CTP.MAPHONG, PD.MAKH, @diem
+    FROM dbo.CHITIETDATPHONG CTP
+    INNER JOIN dbo.PHIEUDATPHONG PD ON CTP.MAPDK = PD.MAPDK
+    WHERE PD.MAPDK = @mapdk;
+    
+COMMIT TRAN;
+GO
 
+--
 
 
 

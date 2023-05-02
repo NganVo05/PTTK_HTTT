@@ -1,3 +1,10 @@
+const toText= {
+  "guaranteed-reservation": "Đảm bảo",
+  "non-guaranteed-reservation": "Không đảm bảo"
+};
+
+var bookingDetail = JSON.parse(localStorage.getItem('bookingDetail') || '[]');
+
 $(document).ready(function() {
   var arriveInput = $("#arrive");
   var departInput = $("#depart");
@@ -55,6 +62,7 @@ $(document).ready(function() {
     for (var i = 1; i <= maxValue; i++) {
       select.append('<option value="' + i + '">' + i + '</option>');
     }
+    if(order.length > 0){}
   });
 
 $(document).ready(function() {

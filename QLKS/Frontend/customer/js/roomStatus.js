@@ -1,3 +1,8 @@
+const toText= {
+  "guaranteed-reservation": "Đảm bảo",
+  "non-guaranteed-reservation": "Không đảm bảo"
+};
+
 $(document).ready(function() {
   var arriveInput = $("#arrive");
   var departInput = $("#depart");
@@ -48,16 +53,6 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    var maxValue = 10; // set the maximum value
-    var select = $('#number-of-rooms'); // select the select element
-    
-    // loop through the values and append new options
-    for (var i = 1; i <= maxValue; i++) {
-      select.append('<option value="' + i + '">' + i + '</option>');
-    }
-  });
-
-$(document).ready(function() {
     $('button[value="booking"]').click(function() {
       window.location.href = "bookingRoom.html";
     });
@@ -65,7 +60,32 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $('button[value="roomList"]').click(function() {
-    // Handle the button click here
-    window.location.href = "roomStatus.html";
+    var formValues = {};
+    $('form input, form select, form textarea').each(function() {
+      // if ($(this).val() === '' && this.name !== 'group' && this.name !== 'comment') {
+      //     alert('Please fill out field ' + this.name + ' before submitting the form.');
+      //     return false; // exit the loop if a field is empty
+      // }
+      formValues[this.name] = $(this).val();
+    });
+    console.log(formValues);
+
+    var info = {};
+    info.arrive = formValues.arrive;
+    info.depart = formValues.depart;
+    info.type = toText[formValues.type];
+
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:5080/api/RoomStatus?arrive=" + info.arrive + "&depart=" + info.depart + "&type=" + info.type,
+      // data: JSON.stringify(info),
+      contentType: "application/json",
+      success: function(data) {
+        console.log("Data received:", JSON.stringify(data.JSON()));
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log("Error:", errorThrown);
+      }
+    });
   });
 });
