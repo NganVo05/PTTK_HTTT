@@ -14,11 +14,12 @@ const login_customer = async (req, res, next) => {
 
 const roomStatus = async (req, res, next) => {
     try {
-        var data = {};
-        data.arrive = req.query.arrive;
-        data.depart = req.query.depart;
-        data.type = req.query.type;
-        // const data = req.body;
+        // var data = {};
+        // data.arrive = req.query.arrive;
+        // data.depart = req.query.depart;
+        // data.type = req.query.type;
+        // console.log("Data: ", data);
+        const data = req.body;
         const room = await booking.roomStatus(data);
         res.send(room);
     } catch (error) {

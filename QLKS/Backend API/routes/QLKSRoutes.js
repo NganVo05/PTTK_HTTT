@@ -19,7 +19,8 @@ router.post('/login/customer', QLKSControll.login_customer);
 // router.post('/customer/addFeedback',CUSTOMERControll.postFeedback);
 // router.post('/customer/signup',CUSTOMERControll.create_Customer);
 //-----------------------------bookingRoom---------------------------------
-router.get('/RoomStatus', QLKSControll.roomStatus);
+// router.get('/RoomStatus', QLKSControll.roomStatus);
+router.post('/RoomStatus', QLKSControll.roomStatus);
 router.post('/Rating', QLKSControll.rateRoom);
 router.post('/Booking', QLKSControll.bookRoom);
 

@@ -6,15 +6,17 @@
     <!-- external -->
     <link rel="stylesheet" href="./css/bookingRoom.css"> 
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./js/roomStatus.js"> </script>
+
 </head>
 
 <body>
-    <form action="" >
+    <form >
         <!--  Details -->
         <div class="form-group">
-          <h2 class="heading" style="font-weight: bold;">Chi tiết</h2>
+          <h2 class="heading" style="font-weight: bold;">Tra cứu phòng</h2>
           <div class="grid">
             <div class="col-1-2 col-1-2-sm" style="padding-right: 10px;" >
                 <div class="controls">
@@ -36,8 +38,8 @@
                   <i class="fa fa-sort"></i>
                   <select name="type" class="floatLabel" required>
                   <option value="" selected></option>
-                  <option value="guaranteed-reservation">Đảm bảo</option>
-                  <option value="non-guaranteed-reservation">Không đảm bảo</option>
+                  <option value="2">Đảm bảo</option>
+                  <option value="1">Không đảm bảo</option>
                   </select>
                   <label for="fruit">Loại phòng</label>
               </div>     
@@ -60,10 +62,13 @@
             </div> 
             <div class="col-1-2">
               <div class="controls">
-                <button type="button" value="roomList" >Tra cứu</button>
+                <button type="submit" value="Submit" >Tra cứu</button>
               </div>          
             </div>
           </div>  
         </div> <!-- /.form-group -->
+        <div class="container" id="myTable" >
+          
+      </div>
     </form>
 </body>

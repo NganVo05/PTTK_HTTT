@@ -1,20 +1,33 @@
 const toText= {
-  "guaranteed-reservation": "Đảm bảo",
-  "non-guaranteed-reservation": "Không đảm bảo"
+  "1": "Đảm bảo",
+  "2": "Không đảm bảo"
 };
 
 var bookingDetail = JSON.parse(localStorage.getItem('bookingDetail') || '[]');
 
 $(document).ready(function() {
+  if (bookingDetail){
+    console.log(bookingDetail);
+    $('form input, form select, form textarea').each(function() {
+      $(this).val(bookingDetail[this.name]);
+      $(this).next().addClass("active");
+    });
+  }
+  
   var arriveInput = $("#arrive");
   var departInput = $("#depart");
   var dayLabel = $("#day");
-  
   // Set the minimum value of the date inputs to today's date
   var currentDate = new Date().toISOString().slice(0, 10);
+  // console.log(currentDate); 
+  
   arriveInput.attr("min", currentDate);
   // Set min value of depart to arrive date
-  $("#depart").attr("min", $("#arrive").val());
+  var arriveValue = $("#arrive").val();
+  // console.log(arriveValue);
+  if(!arriveValue)
+    arriveValue = currentDate;
+  $("#depart").attr("min", arriveValue);
 
   // Update min value of depart when arrive date changes
   $("#arrive").change(function() {
@@ -55,17 +68,6 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    var maxValue = 10; // set the maximum value
-    var select = $('#number-of-rooms'); // select the select element
-    
-    // loop through the values and append new options
-    for (var i = 1; i <= maxValue; i++) {
-      select.append('<option value="' + i + '">' + i + '</option>');
-    }
-    if(order.length > 0){}
-  });
-
-$(document).ready(function() {
     $('form').submit(function(event) {
       event.preventDefault();
       var formValues = {};
@@ -76,13 +78,20 @@ $(document).ready(function() {
         // }
         formValues[this.name] = $(this).val();
       });
-      console.log(formValues);
+      localStorage.setItem('bookingDetail', JSON.stringify(formValues));
+      console.log(JSON.parse(localStorage.getItem('bookingDetail'))); // for debugging purposes
+      window.location.href = "bookingDetail.html";
     });
   });
 
 $(document).ready(function() {
   $('button[value="roomList"]').click(function() {
-    // Handle the button click here
+    var formValues = {};
+      $('form input, form select, form textarea').each(function() {
+        formValues[this.name] = $(this).val();
+      });
+      localStorage.setItem('bookingDetail', JSON.stringify(formValues));
+      // console.log(JSON.parse(localStorage.getItem('bookingDetail'))); // for debugging purposes
     window.location.href = "roomStatus.html";
   });
 });

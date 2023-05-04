@@ -1,1 +1,1 @@
-EXEC [dbo].[USP_AvailableRoom] @arrive, @depart, @type 
+EXEC [dbo].[USP_AvailableRoom] @Arrive, @Depart, @Type 

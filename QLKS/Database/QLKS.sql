@@ -689,7 +689,7 @@ go
 create table CHITIETDATPHONG (
    MAPDK                varchar(15)          not null,
    MAPHONG              varchar(8)           not null,
-   NOTE                 varchar(50)          null,
+   NOTE                 nvarchar(50)          null,
    constraint PK_CHITIETDATPHONG primary key (MAPDK, MAPHONG)
 )
 go
@@ -781,7 +781,7 @@ go
 /*==============================================================*/
 create table DICHVU (
    MADV                 varchar(15)          not null,
-   TENDV                varchar(30)          not null,
+   TENDV                nvarchar(30)          not null,
    constraint PK_DICHVU primary key (MADV)
 )
 go
@@ -791,9 +791,9 @@ go
 /*==============================================================*/
 create table DOITACLUHANH (
    MADT                 varchar(15)          not null,
-   TENDT                varchar(30)          not null,
+   TENDT                nvarchar(30)          not null,
    SDT                  varchar(15)          not null,
-   DIACHI               varchar(50)          not null,
+   DIACHI               nvarchar(50)          not null,
    constraint PK_DOITACLUHANH primary key (MADT)
 )
 go
@@ -837,14 +837,14 @@ create table HOADONDV (
    MAKH                 varchar(15)          not null,
    NGAY_LAP             datetime             not null,
    THANHTIEN            float                not null,
-   PTTT                 varchar(20)          not null,
-   TINHTRANG            varchar(20)          not null,
+   PTTT                 nvarchar(20)          not null,
+   TINHTRANG            nvarchar(20)          not null,
    MANV                 varchar(8)           not null,
    MAKG         varchar(15)          not null,
    MADV                 varchar(15)          not null,
    MAPDK                varchar(15)          not null,
    STT                  int                  not null,
-   NOTE                 varchar(50)          null,
+   NOTE                 nvarchar(50)          null,
    constraint PK_HOADONDV primary key (MAHD)
 )
 go
@@ -892,9 +892,9 @@ create table HOADONPHONG (
    MAHD                 varchar(15)          not null,
    NGAY_LAP             datetime             not null,
    THANHTIEN            float                not null,
-   PTTT                 varchar(20)          not null,
-   TINHTRANG            varchar(20)          not null,
-   NOTE                 varchar(50)          null,
+   PTTT                 nvarchar(20)          not null,
+   TINHTRANG            nvarchar(20)          not null,
+   NOTE                 nvarchar(50)          null,
    constraint PK_HOADONPHONG primary key (MAHD)
 )
 go
@@ -936,7 +936,7 @@ create table KHUNGGIODV (
    MAKG         varchar(15)          not null,
    GIOBD                time             not null,
    GIOKT                time             not null,
-   NGAY                 varchar(10)          not null,
+   NGAY                 nvarchar(10)          not null,
    SLTD                 int                  not null,
    constraint PK_KHUNGGIODV primary key (MAKG)
 )
@@ -947,7 +947,7 @@ go
 /*==============================================================*/
 create table KHUYENMAI (
    MAKM                 varchar(15)          not null,
-   TENKM                varchar(30)          not null,
+   TENKM                nvarchar(30)          not null,
    NGAYBD               date            not null,
    NGAYKT               date             not null,
    GIOBD                time             not null,
@@ -961,11 +961,11 @@ go
 /*==============================================================*/
 create table NHANVIEN (
    MANV                 varchar(8)           not null,
-   HOTEN                varchar(30)          not null,
-   DIACHI               varchar(50)          not null,
+   HOTEN                nvarchar(30)          not null,
+   DIACHI               nvarchar(50)          not null,
    EMAIL                varchar(30)          not null,
    SDT                  varchar(15)          not null,
-   BOPHAN               varchar(15)          not null,
+   BOPHAN               nvarchar(15)          not null,
    constraint PK_NHANVIEN primary key (MANV)
 )
 go
@@ -1018,7 +1018,7 @@ create table PHIEUDKTOUR (
    NGAYBD				datetime             not null,
    NGAYKT               datetime             not null,
    SOLUONG              int                  not null,
-   NOTE                 varchar(50)          null,
+   NOTE                 nvarchar(50)          null,
    constraint PK_PHIEUDKTOUR primary key (MAPDK)
 )
 go
@@ -1098,7 +1098,7 @@ create table PHIEU_DKDV_SP (
    MAKH                 varchar(15)          not null,
    NGAYLAP              datetime             not null,
    MASP                 varchar(15)          null,
-   NOTE                 varchar(50)          null,
+   NOTE                 nvarchar(50)          null,
    THANHTIEN            float                not null,
    SOLUONG              int                  not null,
    constraint PK_PHIEU_DKDV_SP primary key (MAKG, MADV, MAPDK, STT)
@@ -1187,10 +1187,9 @@ go
 /*==============================================================*/
 create table PHONG (
    MAPHONG              varchar(8)           not null,
-   MOTA                 varchar(50)          not null,
+   MOTA                 nvarchar(50)          not null,
    IMG                  text                 not null,
-   LOAIPHONG            varchar(20)          not null,
-   TINHTRANG            varchar(20)          not null,
+   LOAIPHONG            nvarchar(20)          not null,
    GIA                  float                not null,
    constraint PK_PHONG primary key (MAPHONG)
 )
@@ -1201,7 +1200,7 @@ go
 /*==============================================================*/
 create table SANPHAM (
    MASP                 varchar(15)          not null,
-   TENSP                varchar(30)          not null,
+   TENSP                nvarchar(30)          not null,
    GIA                  float                not null,
    constraint PK_SANPHAM primary key (MASP)
 )
@@ -1212,13 +1211,13 @@ go
 /*==============================================================*/
 create table THONGTINDOAN (
    MAKH                 varchar(15)          not null,
-   TENKH                varchar(30)          not null,
+   TENKH                nvarchar(30)          not null,
    CCCD                 varchar(15)          not null,
-   DIACHI               varchar(50)          null,
+   DIACHI               nvarchar(50)          null,
    SDT                  varchar(15)          not null,
    FAX                  varchar(20)          null,
    EMAIL                varchar(30)          null,
-   TENDOAN              varchar(30)          not null,
+   TENDOAN              nvarchar(30)          not null,
    SOLUONG              int                  not null,
    constraint PK_THONGTINDOAN primary key (MAKH)
 )
@@ -1230,7 +1229,7 @@ go
 create table TOUR (
    MATOUR               varchar(15)          not null,
    MADT                 varchar(15)          not null,
-   DIADIEM              varchar(30)          not null,
+   DIADIEM              nvarchar(30)          not null,
    GIA                  float                not null,
    constraint PK_TOUR primary key (MATOUR)
 )
@@ -1519,42 +1518,42 @@ INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [DIACHI], [EMAIL], [SDT], [BOPHAN]) VA
 INSERT [dbo].[NHANVIEN] ([MANV], [HOTEN], [DIACHI], [EMAIL], [SDT], [BOPHAN]) VALUES (N'NV93', N'Shad Mcfarland', N'310, Spokane, Arkansas', N'Frost@gmail.com', N'0904917083', N'Bellman')
 GO
 
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P001', N'Texas', N'3.png', N'Không đảm bảo', N'Ðã đặt', 800000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P002', N'Idaho', N'2.png', N'Ðảm bảo', N'Ðã đặt', 1050000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P003', N'Washington', N'2.png', N'Không đảm bảo', N'Còn trống', 1850000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P004', N'Florida', N'5.png', N'Không đảm bảo', N'Ðã đặt', 1650000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P005', N'Iowa', N'5.png', N'Không đảm bảo', N'Còn trống', 1550000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P006', N'Ohio', N'3.png', N'Không đảm bảo', N'Ðang sửa', 1000000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P007', N'Georgia', N'0.png', N'Không đảm bảo', N'Còn trống', 1450000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P008', N'California', N'5.png', N'Không đảm bảo', N'Ðã đặt', 1750000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P009', N'Arkansas', N'4.png', N'Không đảm bảo', N'Còn trống', 1300000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P101', N'Connecticut', N'3.png', N'Ðảm bảo', N'Ðang sửa', 1250000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P102', N'Arkansas', N'1.png', N'Ðảm bảo', N'Ðã đặt', 550000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P103', N'North Dakota', N'0.png', N'Ðảm bảo', N'Còn trống', 1100000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P104', N'Maine', N'6.png', N'Không đảm bảo', N'Còn trống', 1700000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P105', N'Minnesota', N'8.png', N'Ðảm bảo', N'Ðang sửa', 950000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P106', N'South Carolina', N'2.png', N'Không đảm bảo', N'Còn trống', 350000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P107', N'Ohio', N'3.png', N'Ðảm bảo', N'Còn trống', 250000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P108', N'Virginia', N'0.png', N'Ðảm bảo', N'Ðã đặt', 1150000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P109', N'Alaska', N'7.png', N'Ðảm bảo', N'Còn trống', 850000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P201', N'Missouri', N'7.png', N'Ðảm bảo', N'Ðã đặt', 200000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P202', N'Ohio', N'9.png', N'Ðảm bảo', N'Ðã đặt', 1200000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P203', N'Wisconsin', N'5.png', N'Ðảm bảo', N'Còn trống', 1500000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P204', N'Mississippi', N'2.png', N'Ðảm bảo', N'Còn trống', 700000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P205', N'Arkansas', N'7.png', N'Ðảm bảo', N'Còn trống', 1400000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P206', N'Montana', N'2.png', N'Không đảm bảo', N'Ðang sửa', 750000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P207', N'Maine', N'2.png', N'Ðảm bảo', N'Còn trống', 400000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P208', N'Tennessee', N'0.png', N'Ðảm bảo', N'Ðã đặt', 300000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P209', N'North Dakota', N'1.png', N'Không đảm bảo', N'Còn trống', 150000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P301', N'Vermont', N'7.png', N'Không đảm bảo', N'Ðã đặt', 1600000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P302', N'Nebraska', N'6.png', N'Không đảm bảo', N'Còn trống', 1350000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P303', N'Texas', N'8.png', N'Không đảm bảo', N'Còn trống', 1900000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P304', N'Nevada', N'0.png', N'Không đảm bảo', N'Còn trống', 500000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P305', N'Kansas', N'7.png', N'Ðảm bảo', N'Ðang sửa', 450000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P306', N'South Dakota', N'4.png', N'Ðảm bảo', N'Ðang sửa', 900000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P307', N'Indiana', N'6.png', N'Không đảm bảo', N'Ðã đặt', 600000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P308', N'Rhode Island', N'7.png', N'Không đảm bảo', N'Còn trống', 1800000)
-INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [TINHTRANG], [GIA]) VALUES (N'P309', N'New York', N'3.png', N'Ðảm bảo', N'Còn trống', 650000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P001', N'Texas', N'3.png', N'Không đảm bảo', 800000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P002', N'Idaho', N'2.png', N'Ðảm bảo', 1050000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P003', N'Washington', N'2.png', N'Không đảm bảo', 1850000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P004', N'Florida', N'5.png', N'Không đảm bảo', 1650000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P005', N'Iowa', N'5.png', N'Không đảm bảo', 1550000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P006', N'Ohio', N'3.png', N'Không đảm bảo', 1000000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P007', N'Georgia', N'0.png', N'Không đảm bảo', 1450000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P008', N'California', N'5.png', N'Không đảm bảo', 1750000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P009', N'Arkansas', N'4.png', N'Không đảm bảo', 1300000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P101', N'Connecticut', N'3.png', N'Ðảm bảo', 1250000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P102', N'Arkansas', N'1.png', N'Ðảm bảo', 550000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P103', N'North Dakota', N'0.png', N'Ðảm bảo', 1100000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P104', N'Maine', N'6.png', N'Không đảm bảo', 1700000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P105', N'Minnesota', N'8.png', N'Ðảm bảo', 950000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P106', N'South Carolina', N'2.png', N'Không đảm bảo', 350000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P107', N'Ohio', N'3.png', N'Ðảm bảo', 250000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P108', N'Virginia', N'0.png', N'Ðảm bảo', 1150000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P109', N'Alaska', N'7.png', N'Ðảm bảo', 850000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P201', N'Missouri', N'7.png', N'Ðảm bảo', 200000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P202', N'Ohio', N'9.png', N'Ðảm bảo', 1200000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P203', N'Wisconsin', N'5.png', N'Ðảm bảo', 1500000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P204', N'Mississippi', N'2.png', N'Ðảm bảo', 700000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P205', N'Arkansas', N'7.png', N'Ðảm bảo', 1400000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P206', N'Montana', N'2.png', N'Không đảm bảo', 750000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P207', N'Maine', N'2.png', N'Ðảm bảo', 400000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P208', N'Tennessee', N'0.png', N'Ðảm bảo', 300000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P209', N'North Dakota', N'1.png', N'Không đảm bảo', 150000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P301', N'Vermont', N'7.png', N'Không đảm bảo', 1600000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P302', N'Nebraska', N'6.png', N'Không đảm bảo', 1350000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P303', N'Texas', N'8.png', N'Không đảm bảo', 1900000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P304', N'Nevada', N'0.png', N'Không đảm bảo', 500000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P305', N'Kansas', N'7.png', N'Ðảm bảo', 450000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P306', N'South Dakota', N'4.png', N'Ðảm bảo', 900000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P307', N'Indiana', N'6.png', N'Không đảm bảo', 600000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P308', N'Rhode Island', N'7.png', N'Không đảm bảo', 1800000)
+INSERT [dbo].[PHONG] ([MAPHONG], [MOTA], [IMG], [LOAIPHONG], [GIA]) VALUES (N'P309', N'New York', N'3.png', N'Ðảm bảo', 650000)
 GO
 
 INSERT [dbo].[SANPHAM] ([MASP], [TENSP], [GIA]) VALUES (N'SP10', N'M&M''s 45g', 17000)
