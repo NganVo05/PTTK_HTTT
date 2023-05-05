@@ -115,11 +115,10 @@ $(document).ready(function() {
     reservationInfor.MAPDK = reservationID;
     reservationInfor.MAKH = customerID;
     reservationInfor.NGAYLAP = new Date();
-    reservationInfor.MANV = "NV01"; 
     reservationInfor.NGAYDEN = bookingDetail.arrive;
     reservationInfor.NGAYDI = bookingDetail.depart;
     reservationInfor.SODEMLUUTRU = bookingDetail.day;
-    reservationInfor.THANHTIEN = toPrice[bookingDetail.type] * parseInt(bookingDetail.room);
+    reservationInfor.THANHTIEN = toPrice[bookingDetail.type] * parseInt(bookingDetail.room) * parseInt(bookingDetail.day);
     reservationInfor.TYPE = toValue[bookingDetail.type];
     reservationInfor.SOPHONG = bookingDetail.room;
     reservationInfor.NOTE = bookingDetail.comment;

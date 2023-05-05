@@ -49,7 +49,6 @@ const bookRoom = async(data) => {
                             .input('MAPDK', sql.VarChar(15), data.MAPDK)
                             .input('MAKH', sql.VarChar(15), data.MAKH)
                             .input('NGAYLAP', sql.DateTime, data.NGAYLAP)
-                            .input('MANV', sql.VarChar(8), data.MANV)
                             .input('NGAYDEN', sql.DateTime, data.NGAYDEN)
                             .input('NGAYDI', sql.DateTime, data.NGAYDI)
                             .input('SODEMLUUTRU', sql.Int, data.SODEMLUUTRU)

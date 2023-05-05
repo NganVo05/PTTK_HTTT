@@ -47,9 +47,5 @@ const addCustomer = async (req, res, next) => {
 }
 
 module.exports = {
-<<<<<<< Updated upstream
-    roomStatus, rateRoom, bookRoom,
-=======
     roomStatus, rateRoom, bookRoom, addCustomer
->>>>>>> Stashed changes
 }

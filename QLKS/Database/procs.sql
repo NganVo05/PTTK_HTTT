@@ -13,6 +13,12 @@ where loaiphong = N'Không đảm bảo';
 update phong set loaiphong = 2
 where loaiphong = N'Ðảm bảo';
 
+update phong set gia = 600000
+where loaiphong = '1';
+
+update phong set gia = 1000000
+where loaiphong = '2';
+
 update phieudatphong
 set sodemluutru = datediff(day, ngayden, ngaydi) + 1;
 
@@ -59,12 +65,12 @@ END
 GO
 
 
-DECLARE @Arrive Date = GETDATE();
-DECLARE @Depart Date = DATEADD(day, 4, @Arrive);
-EXEC USP_AvailableRoom '2023-05-05', '2023-05-09', 2;
-SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Depart BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
-SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Arrive BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
-select * from phieudatphong where mapdk in (select mapdk from chitietdatphong WHERE maphong = 'P105');
+--DECLARE @Arrive Date = GETDATE();
+--DECLARE @Depart Date = DATEADD(day, 4, @Arrive);
+--EXEC USP_AvailableRoom '2023-05-05', '2023-05-09', 2;
+--SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Depart BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
+--SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Arrive BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
+--select * from phieudatphong where mapdk in (select mapdk from chitietdatphong WHERE maphong = 'P105');
 --select *from PHONG;
 --select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = '1';
 --select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong))
@@ -104,7 +110,6 @@ PROCEDURE USP_ThemPhieuDatPhong
 	@MAPDK VARCHAR(15),
     @MAKH VARCHAR(15),
     @NGAYLAP DATETIME,
-    @MANV VARCHAR(8),
     @NGAYDEN DATETIME,
     @NGAYDI DATETIME,
     @SODEMLUUTRU INT,
@@ -131,6 +136,9 @@ BEGIN
  --       RAISERROR('Not enough available rooms for the selected dates and room type.', 16, 1)
  --       RETURN
  --   END
+	
+	DECLARE @MANV VARCHAR(8);
+	SELECT TOP 1 @MANV = MANV FROM NHANVIEN WHERE BOPHAN = N'Lễ tân' ORDER BY NEWID();
 
     -- Insert a new record into the PHIEUDATPHONG table
     INSERT INTO PHIEUDATPHONG (MAPDK, MAKH, NGAYLAP, MANV, NGAYDEN, NGAYDI, SODEMLUUTRU, THANHTIEN)
@@ -146,7 +154,7 @@ BEGIN
 END
 GO
 
---EXEC USP_ThemPhieuDatPhong 'ADC45', 'ABC1234', '2022-05-06', 'NV01', '2022-05-20', '2022-05-22', 2, 1000000.0, '1', 3, 'Ghi chú';
+--EXEC USP_ThemPhieuDatPhong 'AFC45', 'ABC1234', '2022-05-06', '2022-05-16', '2022-05-18', 2, 1000000.0, '1', 3, 'Ghi chú';
 
 --Thêm khách hàng
 DROP PROC IF EXISTS USP_ThemThongTinDoan
