@@ -1,1 +1,1 @@
-EXEC [dbo].[USP_ThemDanhGiaChoPhong] @mapdk, @diem
+EXEC [dbo].[USP_ThemPhieuDatPhong] 	@MAPDK, @MAKH, @NGAYLAP, @MANV, @NGAYDEN, @NGAYDI, @SODEMLUUTRU, @THANHTIEN, @TYPE, @SOPHONG, @NOTE

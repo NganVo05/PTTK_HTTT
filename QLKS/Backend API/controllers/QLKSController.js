@@ -36,6 +36,20 @@ const bookRoom = async (req, res, next) => {
     }
 }
 
+const addCustomer = async (req, res, next) => {
+    try {
+        const data = req.body;
+        const result = await booking.addCustomer(data);
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
+<<<<<<< Updated upstream
     roomStatus, rateRoom, bookRoom,
+=======
+    roomStatus, rateRoom, bookRoom, addCustomer
+>>>>>>> Stashed changes
 }

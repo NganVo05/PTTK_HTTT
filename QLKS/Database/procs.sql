@@ -20,76 +20,54 @@ set sodemluutru = datediff(day, ngayden, ngaydi) + 1;
 DROP PROC IF EXISTS USP_AvailableRoom
 GO
 
-CREATE 
---ALTER 
-PROC USP_AvailableRoom
+CREATE PROCEDURE USP_AvailableRoom
 	@Arrive datetime,
 	@Depart datetime,
 	@Type nvarchar(20)
 AS
-BEGIN TRAN
-	IF @Arrive = '' OR @Depart = '' OR @Type = ''
-		BEGIN
-			SELECT 'PLEASE FILL UP ALL FIELDS' AS 'ERROR';
-			ROLLBACK TRAN;
-			RETURN;
-		END
-	IF NOT EXISTS (select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Arrive between ngayden and ngaydi)))
-		BEGIN
-			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
-			ROLLBACK TRAN;
-			RETURN;
-		END
-	IF NOT EXISTS (select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Depart between ngayden and ngaydi)))
-		BEGIN
-			SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
-			ROLLBACK TRAN;
-			RETURN;
-		END
-	
-	--DECLARE @TEMP TABLE (MAPHONG VARCHAR(8))
-	--INSERT INTO @TEMP SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Arrive BETWEEN ngayden AND ngaydi)
-
-	--INSERT INTO @TEMP (MAPHONG)
-	--SELECT maphong
-	--FROM chitietdatphong c
-	--WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Depart BETWEEN ngayden AND ngaydi)
-	--AND NOT EXISTS (SELECT 1 FROM @TEMP t WHERE t.MAPHONG = c.MAPHONG)
-
-	--SELECT MAPHONG, MOTA, LOAIPHONG, GIA  
-	--FROM PHONG 
-	--where MAPHONG NOT IN (SELECT MAPHONG FROM @TEMP) 
-	--ORDER BY MAPHONG ASC
-	
-	SELECT P.MAPHONG, P.MOTA, P.LOAIPHONG, P.GIA  
-	FROM PHONG P
-	LEFT JOIN (
-		SELECT C.MAPHONG
-		FROM chitietdatphong C
-		INNER JOIN phieudatphong PD ON C.MAPDK = PD.MAPDK
-		WHERE @Arrive BETWEEN PD.NGAYDEN AND PD.NGAYDI 
-			OR @Depart BETWEEN PD.NGAYDEN AND PD.NGAYDI
-			OR (PD.NGAYDEN BETWEEN @Arrive AND @Depart OR PD.NGAYDI BETWEEN @Arrive AND @Depart)
-		GROUP BY C.MAPHONG
-		HAVING COUNT(*) >= 1
-	) T ON P.MAPHONG = T.MAPHONG
-	WHERE T.MAPHONG IS NULL AND P.LOAIPHONG = @Type
-	ORDER BY P.MAPHONG ASC
-	--SELECT 'The available rooms for the selected dates were successfully retrieved.' AS '1'
-	select @Arrive,@Depart, @Type	  
-COMMIT TRAN
+BEGIN
+	IF @Arrive IS NULL OR @Depart IS NULL OR @Type = ''
+	BEGIN
+		SELECT 'PLEASE FILL UP ALL FIELDS' AS 'ERROR';
+	END
+	ELSE IF NOT EXISTS (SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Arrive BETWEEN ngayden AND ngaydi)) and loaiphong = @Type)
+	BEGIN
+		SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
+	END
+	ELSE IF NOT EXISTS (SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Depart BETWEEN ngayden AND ngaydi)) and loaiphong = @Type)
+	BEGIN
+		SELECT 'No available rooms were ready for the selected dates.' AS 'ERROR';
+	END
+	ELSE
+	BEGIN
+		SELECT P.MAPHONG, P.MOTA, P.LOAIPHONG, P.GIA  
+		FROM PHONG P
+		LEFT JOIN (
+			SELECT C.MAPHONG
+			FROM chitietdatphong C
+			INNER JOIN phieudatphong PD ON C.MAPDK = PD.MAPDK
+			WHERE @Arrive BETWEEN PD.NGAYDEN AND PD.NGAYDI 
+				OR @Depart BETWEEN PD.NGAYDEN AND PD.NGAYDI
+				OR (PD.NGAYDEN BETWEEN @Arrive AND @Depart OR PD.NGAYDI BETWEEN @Arrive AND @Depart)
+			GROUP BY C.MAPHONG
+			HAVING COUNT(*) >= 1
+		) T ON P.MAPHONG = T.MAPHONG
+		WHERE T.MAPHONG IS NULL AND P.LOAIPHONG = @Type
+		ORDER BY P.MAPHONG ASC;
+	END
+END
 GO
 
---DECLARE @Arrive Date = GETDATE();
---DECLARE @Depart Date = DATEADD(day, 11, @Arrive);
-EXEC USP_AvailableRoom '2023-05-03', '2023-05-03', 2;
-select *from PHONG;
-select *from PHONG where loaiphong = N'Không đảm bảo';
-select *from PHONG where loaiphong = N'Ðảm bảo';
-select *from PHONG where loaiphong like '%bảo';
-print cast (N'Ðảm bảo' as int)
---select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = 'Không đảm bảo';
---select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = 'Đảm bảo';
+
+DECLARE @Arrive Date = GETDATE();
+DECLARE @Depart Date = DATEADD(day, 4, @Arrive);
+EXEC USP_AvailableRoom '2023-05-05', '2023-05-09', 2;
+SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Depart BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
+SELECT maphong FROM phong WHERE maphong NOT IN (SELECT maphong FROM chitietdatphong WHERE mapdk IN (SELECT mapdk FROM phieudatphong WHERE @Arrive BETWEEN ngayden AND ngaydi)) and loaiphong = '2';
+select * from phieudatphong where mapdk in (select mapdk from chitietdatphong WHERE maphong = 'P105');
+--select *from PHONG;
+--select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong)) and loaiphong = '1';
+--select maphong from phong where maphong not in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong))
 --select * from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where '2023-05-13' between ngayden and ngaydi))
 --select * from phong where maphong in (select maphong from chitietdatphong where mapdk in (select mapdk from phieudatphong where @Arrive between ngayden and ngaydi))
 
@@ -102,17 +80,19 @@ CREATE
 PROCEDURE USP_ThemDanhGiaChoPhong
     @mapdk varchar(15),
     @diem float
-AS
-BEGIN TRAN;    
+AS  
     -- Insert danh gia for each phong in the phieu dat phong
     INSERT INTO dbo.DANHGIA (MAPHONG, MAKH, DIEM)
+	-- OUTPUT 'New review successfully received.' AS Message
     SELECT CTP.MAPHONG, PD.MAKH, @diem
     FROM dbo.CHITIETDATPHONG CTP
     INNER JOIN dbo.PHIEUDATPHONG PD ON CTP.MAPDK = PD.MAPDK
     WHERE PD.MAPDK = @mapdk;
-    
-COMMIT TRAN;
+
+	SELECT 'New review successfully received.' AS Message
 GO
+
+--EXEC USP_ThemDanhGiaChoPhong 'ADC45',  5;
 
 --Đặt phòng
 DROP PROC IF EXISTS USP_ThemPhieuDatPhong
@@ -143,6 +123,7 @@ BEGIN
 
     INSERT INTO @AvailableRooms (MAPHONG, MOTA, LOAIPHONG, GIA)
     EXEC USP_AvailableRoom @NGAYDEN, @NGAYDI, @TYPE
+	--SELECT * FROM @AvailableRooms;
 
 	---- Check if there are enough available rooms for the specified date range and room type
  --   IF @@ROWCOUNT < @SoPhong
@@ -157,13 +138,15 @@ BEGIN
 
     -- Insert associated records into the CHITIETDATPHONG table
     INSERT INTO CHITIETDATPHONG (MAPDK, MAPHONG, NOTE)
-    SELECT TOP (@SoPhong) @MAPDK, MAPHONG, @NOTE
-    FROM @AvailableRooms
-    ORDER BY MAPHONG ASC
+    SELECT TOP (@SoPhong) @MAPDK, AR.MAPHONG, @NOTE
+    FROM @AvailableRooms AR
+    ORDER BY AR.MAPHONG ASC
 
     SELECT 'New reservation successfully created.' AS 'Message'
 END
 GO
+
+--EXEC USP_ThemPhieuDatPhong 'ADC45', 'ABC1234', '2022-05-06', 'NV01', '2022-05-20', '2022-05-22', 2, 1000000.0, '1', 3, 'Ghi chú';
 
 --Thêm khách hàng
 DROP PROC IF EXISTS USP_ThemThongTinDoan
@@ -172,20 +155,23 @@ GO
 CREATE 
 PROCEDURE USP_ThemThongTinDoan
 	@MaKH varchar(15),
-	@TenKH varchar(30),
+	@TenKH nvarchar(30),
 	@CCCD varchar(15),
-	@DiaChi varchar(50),
+	@DiaChi nvarchar(50),
 	@SDT varchar(15),
 	@Fax varchar(20),
 	@Email varchar(30),
-	@TenDoan varchar(30),
+	@TenDoan nvarchar(30),
 	@SoLuong int
 AS
 BEGIN
 	INSERT INTO THONGTINDOAN (MAKH, TENKH, CCCD, DIACHI, SDT, FAX, EMAIL, TENDOAN, SOLUONG)
+	OUTPUT 'New customer successfully received.' AS Message
 	VALUES (@MaKH, @TenKH, @CCCD, @DiaChi, @SDT, @Fax, @Email, @TenDoan, @SoLuong)
 END
 GO
+
+--EXEC USP_ThemThongTinDoan 'ABC1234', 'John Doe', '1234567890', '123 Main St', '555-555-1234', NULL, 'john.doe@example.com', 'Test Group', 10;
 
 
 

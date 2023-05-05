@@ -1,0 +1,1 @@
+EXEC [dbo].[USP_ThemThongTinDoan] 	@MAKH, @TENKH, @CCCD, @DIACHI, @SDT, @FAX, @EMAIL, @TENDOAN, @SOLUONG
