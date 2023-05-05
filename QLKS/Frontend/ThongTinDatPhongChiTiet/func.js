@@ -25,6 +25,34 @@ var detail_text ={
     "GIA": "Giá phòng: "
 }
 
+async function addSuitecase(mapdk){
+    const jsonObject ={
+        "mapdk": mapdk,
+        "makh": makh,
+        "ngaylap": ngaylap,
+        "manv": manv,
+        "soluong": soluong
+    }
+    const response = await fetch(url_addSuite, {
+        method: "POST",
+        body: JSON.stringify(jsonObject),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    const data = await response.json();
+    console.log("responsed data",data)
+    if(Object.keys(data[0]) == 'ERROR'){
+        alert("ERROR: " + data[0].ERROR)
+    }
+    else{
+        alert("Add Food For Restaurant Successfully!")
+    }
+    // location.href = "manage_restaurants.html"
+
+   
+}
+
 
 function returnMenu(data){
     
@@ -98,11 +126,14 @@ function returnMenu(data){
     title.appendChild(document.createTextNode("Số lượng hành lý: "))
 
     const input = document.createElement("input")
+    input.setAttribute("id","soluong")
     input.setAttribute("type", "number")
     title.appendChild(input)
 
     const btn_DangKy = document.createElement("button")
-    btn_DangKy.click = getData()
+    btn_DangKy.onclick = function(){
+        addSuitecase(data.mapdk)
+    }
     btn_DangKy.appendChild(document.createTextNode("Đăng ký"))
 
 
@@ -110,6 +141,9 @@ function returnMenu(data){
 
     detail_btn.appendChild(title)    
     column[1].appendChild(detail_btn)
+
+    
+    console.log(myNumberInput)
     
 }
 
@@ -125,5 +159,4 @@ async function connectfetch(){
     }
 }
 connectfetch()
-
 

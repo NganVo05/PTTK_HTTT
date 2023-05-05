@@ -1,1 +1,0 @@
-EXEC [dbo].[loginForStaff] @username, @password

@@ -1,1 +1,0 @@
-EXEC [dbo].[loginForDriver] @username, @password

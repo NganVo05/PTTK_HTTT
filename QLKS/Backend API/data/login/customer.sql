@@ -1,1 +1,0 @@
-EXEC [dbo].[loginForCustomer] @username, @password
