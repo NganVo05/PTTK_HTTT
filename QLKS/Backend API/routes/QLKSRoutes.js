@@ -18,6 +18,7 @@ router.post('/add-suitecase-to-trans',LeTanController.suitcaseTrans);
 router.get('/suitcase-list-for-bellman/:id',BellmanController.suitcaseListForBellman);
 router.post('/update-suitcase-for-bellman', BellmanController.updateSuitcaseForBellman)
 
+
 //-----------------------------bookingRoom---------------------------------
 // router.get('/RoomStatus', QLKSControll.roomStatus);
 router.post('/RoomStatus', QLKSControll.roomStatus);

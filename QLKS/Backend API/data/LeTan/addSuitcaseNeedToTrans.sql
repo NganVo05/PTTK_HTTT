@@ -1,1 +1,1 @@
-EXEC [dbo].[addSuitcaseNeedToTrans] @mapdk, @makh, @ngaylap, @manv, @soluong
+EXEC [dbo].[addSuitcaseNeedToTrans] @mapdk, @makh, @ngaylap, @soluong

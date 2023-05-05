@@ -38,14 +38,15 @@ begin
 	SELECT DISTINCT HL.MAPHONG, KH.TENKH,P.NGAYLAP, P.MANV, P.MAPDK
 	FROM PHIEUVCHL P 
 	join THONGTINDOAN KH on KH.MAKH = P.MAKH
-	join VANCHUYEN VC on VC.MAPDK = P.MAPDK
 	JOIN HANHLI HL ON HL.MAKH = KH.MAKH
 	WHERE P.TINHTRANG = N'CHỜ VẬN CHUYỂN'
+	ORDER BY P.NGAYLAP DESC
 end
 GO
 exec getSuitcaseList 'NV38'
 SELECT * FROM HANHLI --KHÔNG ĐĂNG KÝ, TỰ VC
-SELECT * FROM PHIEUVCHL --ĐĂNG KÝ VẬN CHUYỂN HL NHƯNG BELLMAN CHƯA VC
+SELECT * FROM PHIEUVCHL --ĐĂNG KÝ VẬN CHUYỂN HL NHƯNG BELLMAN CHƯA VC 
+WHERE TINHTRANG = N'CHỜ VẬN CHUYỂN'
 SELECT * FROM VANCHUYEN --BELLMAN ĐÃ VC THÀNH CÔNG
 
 UPDATE PHIEUVCHL SET TINHTRANG = N'CHỜ VẬN CHUYỂN' WHERE MAPDK = 'PDK160740'
@@ -64,23 +65,21 @@ proc addSuitcaseNeedToTrans
 	@mapdk varchar(15),
 	@makh varchar(15),
 	@ngaylap datetime,
-	@manv varchar(15),
 	@soluong int
 as
 begin
+	declare @manv varchar(15)
 	set @ngaylap = getdate()
 	if exists(select * from PHIEUVCHL where MAPDK = @mapdk)
 	begin
 		select 'Phiếu đăng ký đã tồn tại' AS 'ERROR'
 	end
-	if not exists(select * from NHANVIEN where MANV = @manv)
-	begin
-		select 'Nhân viên không tồn tại' AS 'ERROR'
-	end
-	insert into PHIEUVCHL values(@mapdk,@makh,@ngaylap,@manv ,@soluong, N'CHỜ VẬN CHUYỂN')
+	
+	set @manv = ( SELECT TOP 1 MANV FROM NHANVIEN WHERE BOPHAN = 'Bellman' ORDER BY NEWID() )
+	insert into PHIEUVCHL values(@mapdk, @makh, @ngaylap, @manv,@soluong, N'CHỜ VẬN CHUYỂN')
 end
 GO
-
+SELECT * FROM PHIEUVCHL
 
 
 ----CẬP NHẬT TÌNH TRẠNG VẬN CHUYỂN HÀNH LÝ------------
@@ -99,7 +98,7 @@ end
 GO
 exec updateSuitcase 'PDK651659'
 UPDATE PHIEUVCHL SET TINHTRANG = N'CHỜ VẬN CHUYỂN' WHERE MAPDK = 'PDK651659'
-SELECT * FROM PHIEUVCHL
+
 
 --CHI TIẾT ĐẶT PHÒNG CỦA KHÁCH HÀNG
 --CREATE

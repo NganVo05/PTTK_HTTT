@@ -25,13 +25,42 @@ var detail_text ={
     "GIA": "Giá phòng: "
 }
 
-async function addSuitecase(mapdk){
+String.prototype.hashCodeForMA = function() {
+    var hash = 0,
+    i, chr;
+  
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+      chr = this.charCodeAt(i);
+      
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    const hashStr = hash.toString();
+    if(hashStr[0] === '-'){
+      return hashStr.replace("-","")
+    }
+    return hashStr;
+}
+
+
+async function addSuitecase(makh,ngaylapks){
+    var today = new Date()
+    var ngaylap = today.toISOString();
+    var str = makh + ngaylap
+ 
+    var mapdk = 'PDK' + str.hashCodeForMA()
+
+    console.log(mapdk)
+    console.log(ngaylap)
+
+    var soluong = document.getElementById('soluong')
+    
     const jsonObject ={
-        "mapdk": mapdk,
-        "makh": makh,
-        "ngaylap": ngaylap,
-        "manv": manv,
-        "soluong": soluong
+        "MAPDK": mapdk,
+        "MAKH": makh,
+        "NGAYLAP": ngaylapks,
+        "SOLUONG": soluong.value
     }
     const response = await fetch(url_addSuite, {
         method: "POST",
@@ -40,17 +69,16 @@ async function addSuitecase(mapdk){
             "Content-Type": "application/json",
         },
     });
+    console.log(response)
     const data = await response.json();
-    console.log("responsed data",data)
-    if(Object.keys(data[0]) == 'ERROR'){
-        alert("ERROR: " + data[0].ERROR)
+    
+    if(Object.keys(data) == 'ERROR'){
+        alert("ERROR: " + data.ERROR)
     }
     else{
-        alert("Add Food For Restaurant Successfully!")
+        alert("Add Successfully!")
     }
     // location.href = "manage_restaurants.html"
-
-   
 }
 
 
@@ -59,6 +87,7 @@ function returnMenu(data){
     const header_detail = document.getElementById("header-detail")
     //tên 5 trường đầu tiên của mục header
     var header_keys = Object.keys(data[0][0])
+    
     //giá trị của 5 trường đó
     var header_value = data[0][0]
     for (let j = 0; j < header_keys.length; j++){
@@ -131,19 +160,18 @@ function returnMenu(data){
     title.appendChild(input)
 
     const btn_DangKy = document.createElement("button")
+    // console.log(data[0][0].MAKH)
+    // console.log(data[0][0].NGAYLAP)
     btn_DangKy.onclick = function(){
-        addSuitecase(data.mapdk)
+        addSuitecase(data[0][0].MAKH, data[0][0].NGAYLAP)
     }
     btn_DangKy.appendChild(document.createTextNode("Đăng ký"))
-
-
     title.appendChild(btn_DangKy)
 
     detail_btn.appendChild(title)    
     column[1].appendChild(detail_btn)
 
     
-    console.log(myNumberInput)
     
 }
 
