@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+#header-box{
+    height: 180px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    position: relative;
+}
+
+#header-box h2{
+    text-align: center;
+    position: absolute;
+    margin: 20px 0;
+    width: 100%;
+}
+
+#header-box #header-detail{
+  display: flex;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+#header-box #header-detail #header-info{
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: 100%;
+}
+
+#btn-back-home{
+    position: absolute;
+    top: 10%;
+    margin-left: 30px;
+    border: none;
+    background-color: rgb(238, 220, 255);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+#btn-back-home:hover{
+    background-color: gray;
+}
+
+
+#list-form{
+    background-color: rgb(243, 240, 240);
+    margin: 50px;
+}
+
+.form_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.form_container .column{
+    display: flex;
+    flex-flow: column wrap;
+    width: 35%;
+}
+
+
+.list-row p{
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.list-row input{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    border: 1px solid;
+    border-radius: 4px;
+    width: 80px;
+    padding-left: 10px;
+}
+
+.list-row button{
+    margin-left: 30px;
+    padding: 0 10px;
+    font-size: 18px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.list-row button:hover{
+    background-color: grey;
+    cursor: pointer;
+}

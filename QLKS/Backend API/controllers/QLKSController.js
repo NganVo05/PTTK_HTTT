@@ -1,6 +1,14 @@
 'use strict';
 const LoginData = require('../data/login');
+<<<<<<< Updated upstream
 const booking = require('../data/booking');
+=======
+<<<<<<< HEAD
+
+=======
+const booking = require('../data/booking');
+>>>>>>> b22ff4b1410b776fbedb8a05d99d45c43a44ae1d
+>>>>>>> Stashed changes
 
 const login_customer = async (req, res, next) => {
     try {
@@ -12,6 +20,14 @@ const login_customer = async (req, res, next) => {
     }
 }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+module.exports = {
+    login_customer
+=======
+>>>>>>> Stashed changes
 const roomStatus = async (req, res, next) => {
     try {
         // var data = {};
@@ -49,4 +65,8 @@ const bookRoom = async (req, res, next) => {
 
 module.exports = {
     login_customer, roomStatus, rateRoom, bookRoom,
+<<<<<<< Updated upstream
+=======
+>>>>>>> b22ff4b1410b776fbedb8a05d99d45c43a44ae1d
+>>>>>>> Stashed changes
 }
