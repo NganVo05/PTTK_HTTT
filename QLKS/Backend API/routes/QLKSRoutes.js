@@ -26,6 +26,15 @@ router.post('/Rating', QLKSControll.rateRoom);
 router.post('/Booking', QLKSControll.bookRoom);
 router.post('/AddCustomer', QLKSControll.addCustomer);
 
+
+//-----------------CheckOut------------
+router.get('/staff/DSPhong', LeTanController.DSPhong);
+router.get('/staff/TimPhong/:id', LeTanController.TimPhong);
+
+router.get('/staff/DSDVDK/:id', LeTanController.DSDVDky);
+
+router.get('/staff/DSHD/:id', LeTanController.DSHoaDon);
+
 module.exports = {
     routes: router
 }
