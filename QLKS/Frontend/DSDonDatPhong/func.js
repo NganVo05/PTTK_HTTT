@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/api/book-room-list/:id";
+const url = "http://localhost:5080/api/book-room-list/:id";
 // const jsonstaff = JSON.parse(sessionStorage.getItem("jsonstaff"))
 // if(jsonstaff === null){
 //     location.href = '/login/'

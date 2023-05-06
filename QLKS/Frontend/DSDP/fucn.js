@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/staff/DSPhong";
+let url = "http://localhost:5080/api/staff/DSPhong";
 // const jsonstaff = JSON.parse(sessionStorage.getItem("jsonstaff"))
 // if (jsonstaff === null) {
 //     location.href = '/login/'
@@ -61,7 +61,7 @@ async function TimKiemPhong() {
     div.removeChild(div.firstChild);
     }
 
-    let url_search = "http://localhost:8080/api/staff/TimPhong/";
+    let url_search = "http://localhost:5080/api/staff/TimPhong/";
     let id = document.getElementById('search-content').value;
     console.log(id)
     url_search = url_search + id

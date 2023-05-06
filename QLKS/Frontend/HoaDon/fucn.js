@@ -1,4 +1,4 @@
-let url = "http://localhost:8080/api/staff/DSHD/" 
+let url = "http://localhost:5080/api/staff/DSHD/" 
 // const jsonstaff = JSON.parse(sessionStorage.getItem("jsonstaff"))
 // if (jsonstaff === null) {
 //     location.href = '/login/'
@@ -27,7 +27,7 @@ async function display(){
     let addValueTKH = document.getElementById("content-tkh")
     addValueTKH.appendChild(document.createTextNode(TENKH))
    
-    url_dvdk="http://localhost:8080/api/staff/DSDVDK/"
+    url_dvdk="http://localhost:5080/api/staff/DSDVDK/"
     url_dvdk=url_dvdk+MAKH
 
     url = url + MAKH

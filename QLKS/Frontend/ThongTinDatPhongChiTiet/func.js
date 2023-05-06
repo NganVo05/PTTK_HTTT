@@ -1,5 +1,5 @@
-var url = "http://localhost:8080/api/detail-booked-room/";
-var url_addSuite = "http://localhost:8080/api/add-suitecase-to-trans"
+var url = "http://localhost:5080/api/detail-booked-room/";
+var url_addSuite = "http://localhost:5080/api/add-suitecase-to-trans"
 const maphong = localStorage.getItem('maphong')
 
 if(maphong === null){

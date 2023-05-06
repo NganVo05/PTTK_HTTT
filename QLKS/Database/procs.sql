@@ -1,22 +1,10 @@
 ﻿USE QLKS
 GO 
 
-update phong set gia = 600000
-where loaiphong = 'Không đảm bảo';
-
-update phong set gia = 1000000
-where loaiphong = 'Đảm bảo';
-
-update phong set loaiphong = 1
-where loaiphong = N'Không đảm bảo';
-
-update phong set loaiphong = 2
-where loaiphong = N'Ðảm bảo';
-
-update phong set gia = 600000
+update phong set gia = 600000	-- KHONG DAM BAO
 where loaiphong = '1';
 
-update phong set gia = 1000000
+update phong set gia = 1000000	-- DAM BAO
 where loaiphong = '2';
 
 update phieudatphong

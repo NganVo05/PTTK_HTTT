@@ -1,5 +1,5 @@
-const url = "http://localhost:8080/api/suitcase-list-for-bellman/:id";
-const url_update = "http://localhost:8080/api/update-suitcase-for-bellman"
+const url = "http://localhost:5080/api/suitcase-list-for-bellman/:id";
+const url_update = "http://localhost:5080/api/update-suitcase-for-bellman"
 // const jsonstaff = JSON.parse(sessionStorage.getItem("jsonstaff"))
 // if(jsonstaff === null){
 //     location.href = '/login/'
