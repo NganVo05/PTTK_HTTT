@@ -193,7 +193,7 @@ async function displayTable(){
     })
 }
 // ------------MAIN------------
-let BASE_URL = readTextFile("../assets/data_local.txt")
+let BASE_URL = readTextFile("./assets/data_local.txt")
 let url_GetSeviceTickets = BASE_URL + '/api/getlistservtickets'
 let url_CreateBill = BASE_URL + '/api/createbill'
 let url_DeleteOrder = BASE_URL + '/api/deleteorder'

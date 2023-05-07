@@ -1,6 +1,6 @@
 let MAPDK = localStorage.getItem('printOrderingID')
 let STT = localStorage.getItem('printOrderingNum')
-let BASE_URL = readTextFile("../assets/data_local.txt")
+let BASE_URL = readTextFile("./assets/data_local.txt")
 let url_getinfo = BASE_URL + '/api/getinfooneticket'
 
 async function displayInfo(){

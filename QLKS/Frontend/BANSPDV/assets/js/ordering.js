@@ -238,7 +238,7 @@ function calTotalPrice(e) {
     }
 }
 // -----------Main---------------
-let BASE_URL = readTextFile("../assets/data_local.txt")
+let BASE_URL = readTextFile("./assets/data_local.txt")
 let dataCollection = {}
 let dataServiceStore
 let dataCusInfo
