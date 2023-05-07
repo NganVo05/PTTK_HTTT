@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordering</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style-select.css">
+    <link rel="stylesheet" href="./assets/css/pagination.css">
+</head>
+<body>
+    <div class="header">
+        <div class="top-panel">
+            <div class="row">
+                <span class="title">Đăng Ký Phiếu Đặt SP/DV</span>
+                <div>
+                    <button class="search-bnt" style="margin-right: 70px; width: 15%;" onclick="location.href = 'index.html' "> Quay Lại</button>
+                    <button class="search-bnt" style=" width: 15%;" onclick="getForm()"> Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="card">
+                <div class="card-input">
+                    <form action="#" id="order-form">
+                        <div class="form-details">
+                            <div class="input-box">
+                                <label for="">Mã Phiếu Đăng Ký</label>
+                                <input type="text" name="billCode" id="billCode">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Mã Khách Hàng</label>
+                                <input type="text" name="cusCode" id="cusCode" style="pointer-events:none;" >
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label >Loại SP/DV</label>
+                                <div class="selectdiv">
+                                    <select class="select--disabled" id = "selectType" onclick="loadStartTime()" disabled >
+                                        <option selected value = "0">Chọn loại SP/DV</option>
+                                    </select>
+                                    <div class="loader-select" hidden></div>
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Giá SP-DV/Đơn vị </label>
+                                <input type="text" name="price" id = "price">
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Ngày giờ BĐ</label>
+                                <div class="selectdiv">
+                                    <select class="select--disabled" id = "startTime" onclick="loadEndTime()" disabled>
+                                        <option selected value="0"> Chọn thời gian bắt đầu </option>
+                                    </select>
+                                    <div class="loader-select" hidden></div>
+                                </div>
+                            </div>
+                            <div class="vl"></div>
+                            <div class="input-box">
+                                <label for="">Ngày giờ KT</label>
+                                <input type="text" name="endTime" id = "endTime">
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Số Lượng</label>
+                                <input type="number" name="quantity" min="1" id = "quantity">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Yêu cầu khác </label>
+                                <input type="text" name="note" id = 'note'>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Tổng giá</label>
+                                <input type="text" name="totalPrice" id = 'totalPrice'>
+                            </div>
+                        </div>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script  type="text/javascript" src="./assets/js/ordering.js"></script> 
+</body>
+</html>

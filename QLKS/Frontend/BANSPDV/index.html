@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordering Management</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/pagination.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="top-panel">
+            <div class="row">
+                <span class="title">Quản Lý Bán SP/DV</span>
+                <form>
+                    <input type="text" class="search-box">
+                    <button for="search-box" class="search-bnt"> Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <div class="widget">
+                        <div>
+                            <button class="button">Trang Chủ</button>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="content">
+                            <label class="text">Mã Nhân Viên: NV030</span>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="content">
+                            <span class="text">Tên Nhân Viên: Nguyễn Văn A</span>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="content">
+                            <span class="text" id = 'numoforders'>SL Đơn Đăng Ký:</span>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div> 
+                            <button class="bnt-signin" onclick="location.href='ordering.html'">Đăng Ký</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <ul class="responsive-table">
+                <li class="table-header">
+                  <div class="col col-1">STT</div>
+                  <div class="col col-2">Mã Khách Hàng</div>
+                  <div class="col col-3">Loại SP/DV</div>
+                  <div class="col col-4">Ngày Đặt</div>
+                  <div class="col col-4">Tổng Tiền</div>
+                  <div class="col col-4">Hành Động</div>
+                  <div class="col col-4"></div>
+                </li>
+                <!-- <li class="table-row">
+                  <div class="col col-1" data-label="STT">42235</div>
+                  <div class="col col-2" data-label="Mã Khách Hàng">John Doe</div>
+                  <div class="col col-3" data-label="Loại SP/DV">$350</div>
+                  <div class="col col-4" data-label="Ngày Đặt">20/02/2023</div>
+                  <button class="col col-4" data-label="Hành Động">In Phiếu</button>
+                  <button class="col col-4" data-label="Hành Động">Xoá Phiếu</button>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="Job Id">42235</div>
+                    <div class="col col-2" data-label="Customer Name">John Doe</div>
+                    <div class="col col-3" data-label="Amount">$350</div>
+                    <div class="col col-4" data-label="Hành Động">20/02/2023</div>
+                    <button class="col col-4 " >In Phiếu</button>
+                    <button class="col col-4 " >Xoá Phiếu</button>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="Job Id">42235</div>
+                    <div class="col col-2" data-label="Customer Name">John Doe</div>
+                    <div class="col col-3" data-label="Amount">$350</div>
+                    <div class="col col-4" data-label="Hành Động">20/02/2023</div>
+                    <button class="col col-4 " >In Phiếu</button>
+                    <button class="col col-4 " >Xoá Phiếu</button>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="Job Id">42235</div>
+                    <div class="col col-2" data-label="Customer Name">John Doe</div>
+                    <div class="col col-3" data-label="Amount">$350</div>
+                    <div class="col col-4" data-label="Hành Động">20/02/2023</div>
+                    <button class="col col-4 " >In Phiếu</button>
+                    <button class="col col-4 " >Xoá Phiếu</button>
+                </li>
+                <li class="table-row">
+                    <div class="col col-1" data-label="Job Id">42235</div>
+                    <div class="col col-2" data-label="Customer Name">John Doe</div>
+                    <div class="col col-3" data-label="Amount">$350</div>
+                    <div class="col col-4" data-label="Hành Động">20/02/2023</div>
+                    <button class="col col-4 " >In Phiếu</button>
+                    <button class="col col-4 " >Xoá Phiếu</button>
+                </li> -->
+            </ul>
+            <div class="p-pagination">
+                <label for="" style="font-size: 20px; font-weight: bold; position: relative; left: -30px">Trang</label>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script  type="text/javascript" src="./assets/js/index.js"></script> 
+</body>
+</html>

@@ -1,0 +1,1 @@
+EXEC [dbo].[BANSPDV_XoaPhieuDK_SPDV] @mapdk, @stt

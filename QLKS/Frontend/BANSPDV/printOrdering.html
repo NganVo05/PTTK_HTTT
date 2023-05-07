@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordering</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style-select.css">
+    <link rel="stylesheet" href="./assets/css/pagination.css">
+    <style type="text/css" media="print">
+        @page { size: landscape; }
+      </style>
+</head>
+<body>
+    <div class="header">
+        <div class="top-panel">
+            <div class="row">
+                <span class="title">Phiếu Đăng Ký SP/DV</span>
+               
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="card">
+                <div class="card-input">
+                    <form action="#" id="order-form">
+                        <div class="form-details">
+                            <div class="input-box">
+                                <label for="">Mã Phiếu Đăng Ký</label>
+                                <input type="text" name="billCode" id="billCode" style="pointer-events:none;">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Mã Khách Hàng</label>
+                                <input type="text" name="cusCode" id="cusCode" style="pointer-events:none;" >
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label >Loại SP/DV</label>
+                                <input type="text" name="type" id="type" style="pointer-events:none;" >
+                            </div>
+                            <div class="input-box">
+                                <label for="">Giá SP-DV/Đơn vị </label>
+                                <input type="text" name="price" id = "price" style="pointer-events:none;">
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Ngày giờ BĐ</label>
+                                <input type="text" name="startTime" id = "startTime" style="pointer-events:none;">
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="vl"></div>
+                            <div class="input-box">
+                                <label for="">Ngày giờ KT</label>
+                                <input type="text" name="endTime" id = "endTime" style="pointer-events:none;">
+                                <div class="loader" hidden></div>
+                            </div>
+                            <div class="input-box">
+                                <label for="">Số Lượng</label>
+                                <input type="number" name="quantity" min="1" id = "quantity" style="pointer-events:none;">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Yêu cầu khác </label>
+                                <input type="text" name="note" id = 'note' style="pointer-events:none;">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Tổng giá</label>
+                                <input type="text" name="totalPrice" id = 'totalPrice' style="pointer-events:none;">
+                            </div>
+                            <div class="input-box">
+                                <label for="">Tình Trạng Thanh Toán</label>
+                                <input type="text" name="statusPaying" id = 'statusPaying' style="pointer-events:none;">
+                            </div>
+                        </div>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script  type="text/javascript" src="./assets/js/printOrdering.js"></script> 
+</body>
+</html>

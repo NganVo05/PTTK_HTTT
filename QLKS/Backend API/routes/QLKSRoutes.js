@@ -5,6 +5,7 @@ const QLKSControll = require('../controllers/QLKSController');
 
 const BellmanController = require('../controllers/BellmanController')
 const LeTanController = require('../controllers/LeTanController');
+const BANSPDVControll = require('../controllers/BANSPDVController');
 
 const router = express.Router();
 
@@ -34,6 +35,17 @@ router.get('/staff/TimPhong/:id', LeTanController.TimPhong);
 router.get('/staff/DSDVDK/:id', LeTanController.DSDVDky);
 
 router.get('/staff/DSHD/:id', LeTanController.DSHoaDon);
+
+// ----------------Ban SPDV--------------
+router.get('/getlistservtickets', BANSPDVControll.BANSPDV_XemPhieuDatSP_DV);
+router.post('/getinfooneticket',BANSPDVControll.BANSPDV_XemThongTinPhieuSP_DV);
+router.post('/createbill',BANSPDVControll.BANSPDV_TaoHoaDonSPDV);
+router.post('/deleteorder',BANSPDVControll.BANSPDV_XoaPhieuDK_SPDV);
+router.post('/getcustomercode',BANSPDVControll.BANSPDV_LayMAKH);
+router.get('/getproductlist', BANSPDVControll.BANSPDV_LayDS_DPDV);
+router.post('/getproductprice',BANSPDVControll.BANSPDV_LayGia_SP);
+router.post('/getsevicedetail',BANSPDVControll.BANSPDV_Lay_KG_Gia_DV);
+router.post('/createorder',BANSPDVControll.BANSPDV_TaoPhieuDK_SPDV);
 
 module.exports = {
     routes: router

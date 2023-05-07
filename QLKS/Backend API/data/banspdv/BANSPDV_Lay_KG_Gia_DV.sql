@@ -1,0 +1,1 @@
+EXEC [dbo].[BANSPDV_Lay_KG_Gia_DV] @madv
