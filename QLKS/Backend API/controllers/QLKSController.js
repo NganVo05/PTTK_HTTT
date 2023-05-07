@@ -46,6 +46,16 @@ const addCustomer = async (req, res, next) => {
     }
 }
 
+const addRoomInvoice = async (req, res, next) => {
+    try {
+        const data = req.body;
+        const result = await booking.addRoomInvoice(data);
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 module.exports = {
-    roomStatus, rateRoom, bookRoom, addCustomer
+    roomStatus, rateRoom, bookRoom, addCustomer, addRoomInvoice, 
 }

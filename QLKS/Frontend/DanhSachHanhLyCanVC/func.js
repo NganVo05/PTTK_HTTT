@@ -26,7 +26,6 @@ async function updateTinhTrangHanhLy(mapdk){
     }
     else {
         alert(json[0].RESULT)
-        location.reload()
     }
 }
 
@@ -54,8 +53,9 @@ function createResponedDisplay(data){
         button.setAttribute("id", "btn-detail")
         const button_p = document.createElement('p') 
         button_p.appendChild(document.createTextNode('CHỜ VẬN CHUYỂN'))
-        button.onclick = function(){ 
-            updateTinhTrangHanhLy(data[i].MAPDK)
+        button.onclick = async function(){ 
+            await updateTinhTrangHanhLy(data[i].MAPDK)
+            window.location.reload()
         }
         button.appendChild(button_p)
         divcard.appendChild(button)

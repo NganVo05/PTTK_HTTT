@@ -6,7 +6,7 @@ const url = "http://localhost:5080/api/book-room-list/:id";
 
 function chitietDatPhong(maphong){
     localStorage.setItem('maphong',maphong)
-    window.open('/ThongTinDatPhongChiTiet/index.html')
+    window.location.href = "/ThongTinDatPhongChiTiet/index.html";
 }
 
 function createResponedDisplay(data){

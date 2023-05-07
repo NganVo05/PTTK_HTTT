@@ -25,6 +25,11 @@ var detail_text ={
     "GIA": "Giá phòng: "
 }
 
+const toText= {
+    "2": "Đảm bảo",
+    "1": "Không đảm bảo"
+  };
+
 String.prototype.hashCodeForMA = function() {
     var hash = 0,
     i, chr;
@@ -83,7 +88,6 @@ async function addSuitecase(makh,ngaylapks){
 
 
 function returnMenu(data){
-    
     const header_detail = document.getElementById("header-detail")
     //tên 5 trường đầu tiên của mục header
     var header_keys = Object.keys(data[0][0])
@@ -183,6 +187,8 @@ async function connectfetch(){
         alert("ERROR: " + data[0].ERROR)
     }
     else{
+        data[1][0].LOAIPHONG = toText[data[1][0].LOAIPHONG];
+        // console.log(data[1][0].LOAIPHONG);
         returnMenu(data)
     }
 }

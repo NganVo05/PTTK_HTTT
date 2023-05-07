@@ -88,6 +88,30 @@ const addCustomer = async(data) => {
     }
 }
 
+const addRoomInvoice = async(data) => {
+    try {
+        let pool = await sql.connect(config.sql);
+        const sqlQueries = await utils.loadSqlQueries('booking');
+        // console.log(typeof(data.arrive));
+        // console.log(data);
+        const result = await pool.request()
+                            .input('MAKH', sql.VarChar(15), data.MAKH)
+                            .input('TENKH', sql.VarChar(30), data.TENKH)
+                            .input('CCCD', sql.VarChar(15), data.CCCD)
+                            .input('DIACHI', sql.VarChar(50), data.DIACHI)
+                            .input('SDT', sql.VarChar(15), data.SDT)
+                            .input('FAX', sql.VarChar(20), data.FAX)
+                            .input('EMAIL', sql.VarChar(30), data.EMAIL)
+                            .input('TENDOAN', sql.VarChar(30), data.TENDOAN)
+                            .input('SOLUONG', sql.Int, data.SOLUONG)
+                            .query(sqlQueries.addRoomInvoice);
+        console.log(result.recordset);
+        return result.recordset;
+    } catch (error) {
+        return error.message;
+    }
+}
+
 module.exports = {
-    roomStatus, rateRoom, bookRoom, addCustomer
+    roomStatus, rateRoom, bookRoom, addCustomer, addRoomInvoice,
 }   

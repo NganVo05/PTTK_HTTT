@@ -139,6 +139,8 @@ GO
 
 --exec getRoomDetail 'P301'
 
+--update phieuvchl set tinhtrang = N'CHỜ VẬN CHUYỂN';
+
 --SELECT * FROM PHONG
 --ALTER TABLE PHONG
 --ALTER COLUMN TINHTRANG NVARCHAR(50)
