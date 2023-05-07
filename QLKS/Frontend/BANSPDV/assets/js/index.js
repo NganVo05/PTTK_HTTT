@@ -193,7 +193,8 @@ async function displayTable(){
     })
 }
 // ------------MAIN------------
-let url_GetSeviceTickets = 'http://localhost:5789/api/getlistservtickets'
-let url_CreateBill = 'http://localhost:5789/api/createbill'
-let url_DeleteOrder = 'http://localhost:5789/api/deleteorder'
+let BASE_URL = readTextFile("../assets/data_local.txt")
+let url_GetSeviceTickets = BASE_URL + '/api/getlistservtickets'
+let url_CreateBill = BASE_URL + '/api/createbill'
+let url_DeleteOrder = BASE_URL + '/api/deleteorder'
 displayTable()

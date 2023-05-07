@@ -238,13 +238,14 @@ function calTotalPrice(e) {
     }
 }
 // -----------Main---------------
+let BASE_URL = readTextFile("../assets/data_local.txt")
 let dataCollection = {}
 let dataServiceStore
 let dataCusInfo
-let url_GetCusCode = 'http://localhost:5789/api/getcustomercode'
-let url_GetProductList = 'http://localhost:5789/api/getproductlist'
-let url_GetProductPrice = 'http://localhost:5789/api/getproductprice'
-let url_GetServiceInfo = 'http://localhost:5789/api/getsevicedetail'
-let url_CreateOrder = 'http://localhost:5789/api/createorder'
+let url_GetCusCode = BASE_URL + '/api/getcustomercode'
+let url_GetProductList = BASE_URL + '/api/getproductlist'
+let url_GetProductPrice =  BASE_URL + '/api/getproductprice'
+let url_GetServiceInfo = BASE_URL + '/api/getsevicedetail'
+let url_CreateOrder = BASE_URL + '/api/createorder'
 checkingBillCode()
 getQuantity()

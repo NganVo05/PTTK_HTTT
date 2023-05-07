@@ -1,6 +1,7 @@
 let MAPDK = localStorage.getItem('printOrderingID')
 let STT = localStorage.getItem('printOrderingNum')
-let url_getinfo = 'http://localhost:5789/api/getinfooneticket'
+let BASE_URL = readTextFile("../assets/data_local.txt")
+let url_getinfo = BASE_URL + '/api/getinfooneticket'
 
 async function displayInfo(){
     let dataRep = {
