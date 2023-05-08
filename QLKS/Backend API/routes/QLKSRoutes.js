@@ -2,11 +2,9 @@
 
 const express = require('express');
 const QLKSControll = require('../controllers/QLKSController');
-
-const BellmanController = require('../controllers/BellmanController')
+const BellmanController = require('../controllers/BellmanController');
 const LeTanController = require('../controllers/LeTanController');
 const BANSPDVControll = require('../controllers/BANSPDVController');
-
 const router = express.Router();
 
 
@@ -17,7 +15,7 @@ router.post('/add-suitecase-to-trans',LeTanController.suitcaseTrans);
 
 //---------------------------Danh sách hành lý cần vận chuyển---------------
 router.get('/suitcase-list-for-bellman/:id',BellmanController.suitcaseListForBellman);
-router.post('/update-suitcase-for-bellman', BellmanController.updateSuitcaseForBellman)
+router.post('/update-suitcase-for-bellman', BellmanController.updateSuitcaseForBellman);
 
 
 //-----------------------------bookingRoom---------------------------------
@@ -26,15 +24,15 @@ router.post('/RoomStatus', QLKSControll.roomStatus);
 router.post('/Rating', QLKSControll.rateRoom);
 router.post('/Booking', QLKSControll.bookRoom);
 router.post('/AddCustomer', QLKSControll.addCustomer);
-
+router.post('/AddCustomer', QLKSControll.addCustomer);
+router.post('/AddRoomInvoice', QLKSControll.addRoomInvoice);
 
 //-----------------CheckOut------------
-router.get('/staff/DSPhong', LeTanController.DSPhong);
-router.get('/staff/TimPhong/:id', LeTanController.TimPhong);
-
-router.get('/staff/DSDVDK/:id', LeTanController.DSDVDky);
-
-router.get('/staff/DSHD/:id', LeTanController.DSHoaDon);
+router.get('/staff/HoaDon', LeTanController.DSHDP);
+router.get('/staff/HoaDon/:id', LeTanController.HoaDon);
+router.post('/staff/updateBill', LeTanController.updateBill);
+router.delete('/staff/deleteBill/:id', LeTanController.deleteBill);
+router.get('/staff/detailBill/:id', LeTanController.deleteBill);
 
 // ----------------Ban SPDV--------------
 router.get('/getlistservtickets', BANSPDVControll.BANSPDV_XemPhieuDatSP_DV);

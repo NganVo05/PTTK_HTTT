@@ -104,7 +104,8 @@ PROCEDURE USP_ThemPhieuDatPhong
     @THANHTIEN FLOAT,
     @TYPE VARCHAR(20),
     @SoPhong INT,
-	@NOTE VARCHAR(50)
+	@NOTE VARCHAR(50),
+	@MAHD VARCHAR(15)
 AS
 BEGIN
     DECLARE @AvailableRooms TABLE (
@@ -136,13 +137,19 @@ BEGIN
     INSERT INTO CHITIETDATPHONG (MAPDK, MAPHONG, NOTE)
     SELECT TOP (@SoPhong) @MAPDK, AR.MAPHONG, @NOTE
     FROM @AvailableRooms AR
-    ORDER BY AR.MAPHONG ASC
+    ORDER BY AR.MAPHONG ASC		
+	
+	-- Insert associated records into the HOADONPHONG table
+    INSERT INTO HOADONPHONG (MAPDK, MANV, MAKH, MAHD, NGAY_LAP, THANHTIEN, PTTT, TINHTRANG, NOTE)
+    VALUES (@MAPDK, @MANV, @MAKH, @MAHD, @NGAYLAP, @THANHTIEN, NULL, N'Chưa thanh toán', @NOTE)
 
     SELECT 'New reservation successfully created.' AS 'Message'
 END
 GO
 
---EXEC USP_ThemPhieuDatPhong 'AFC45', 'ABC1234', '2022-05-06', '2022-05-16', '2022-05-18', 2, 1000000.0, '1', 3, 'Ghi chú';
+--EXEC USP_ThemPhieuDatPhong 'AFC45', 'ABC1234', '18:09:18 8/5/2023', '2022-05-16', '2022-05-18', 2, 1000000.0, '1', 3, 'Ghi chú', 'HD001';
+--SELECT * FROM PHIEUDATPHONG;
+--EXEC DSHDP;
 
 --Thêm khách hàng
 DROP PROC IF EXISTS USP_ThemThongTinDoan

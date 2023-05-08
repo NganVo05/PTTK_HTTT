@@ -1,1 +1,1 @@
-EXEC [dbo].[HoaDon] @makh 
+EXEC [dbo].[TimHoaDonPhong] @MAPDK

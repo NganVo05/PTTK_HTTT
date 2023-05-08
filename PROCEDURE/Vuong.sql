@@ -1,4 +1,8 @@
-﻿
+﻿USE QLKS
+go
+
+DROP PROC IF EXISTS BANSPDV_XemPhieuDatSP_DV 
+GO
 create 
 --alter
 proc BANSPDV_XemPhieuDatSP_DV
@@ -12,9 +16,11 @@ begin
 	   from PHIEU_DKDV_SP where not exists 
 	   (select *from HOADONDV where HOADONDV.MAPDK = PHIEU_DKDV_SP.MAPDK and HOADONDV.STT = PHIEU_DKDV_SP.STT)
 end
+go
 
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_XemThongTinPhieuSP_DV 
+GO
 create
 --alter 
 proc BANSPDV_XemThongTinPhieuSP_DV
@@ -31,9 +37,10 @@ begin
 	from PHIEU_DKDV_SP join KHUNGGIODV on PHIEU_DKDV_SP.MAKG = KHUNGGIODV.MAKG and MAPDK = @mapdk and STT = @stt
 	join HOADONDV on PHIEU_DKDV_SP.MAPDK = HOADONDV.MAPDK and PHIEU_DKDV_SP.STT = HOADONDV.STT
 end
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_TaoHoaDonSPDV 
+GO
 create 
 --alter
 proc BANSPDV_TaoHoaDonSPDV
@@ -61,9 +68,10 @@ begin tran
 	
 commit tran 
 return 1
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_XoaPhieuDK_SPDV 
+GO
 create 
 --alter
 proc BANSPDV_XoaPhieuDK_SPDV
@@ -89,9 +97,10 @@ begin tran
 	select N'Xoá phiếu thành công' RESULT
 commit tran
 return 1
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_LayMAKH 
+GO
 create 
 --alter 
 proc BANSPDV_LayMAKH
@@ -115,9 +124,10 @@ begin
 		select MAKH ,0 STT from PHIEUDATPHONG where MAPDK = @mapdk
 	end
 end
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_LayDS_DPDV 
+GO
 create 
 --alter
 proc BANSPDV_LayDS_DPDV
@@ -126,11 +136,12 @@ begin
 	select MADV from DICHVU where MADV != 'DVBANSP'
 	select MASP from SANPHAM
 end
-
-exec BANSPDV_LayDS_DPDV
+go
+--exec BANSPDV_LayDS_DPDV
 
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_LayGia_SP 
+GO
 create
 --alter
 proc BANSPDV_LayGia_SP
@@ -139,9 +150,10 @@ as
 begin
 	select GIA from SANPHAM where MASP = @masp
 end
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_Lay_KG_Gia_DV 
+GO
 create
 --alter
 proc BANSPDV_Lay_KG_Gia_DV
@@ -151,9 +163,10 @@ begin
 	select CHITIETDV.MAKG, CAST(GIOBD AS char(8)) GIOBD, CAST(GIOKT AS CHAR(8)) GIOKT ,GIA  
 	from CHITIETDV join KHUNGGIODV on MADV = @madv and CHITIETDV.MAKG = KHUNGGIODV.MAKG 
 end
-
+go
 -----------------------------------------------------------
-
+DROP PROC IF EXISTS BANSPDV_TaoPhieuDK_SPDV 
+GO
 create 
 --alter
 proc BANSPDV_TaoPhieuDK_SPDV
@@ -172,3 +185,4 @@ begin tran
 	select N'Tạo phiếu đăng ký thành công!' RESULT
 commit tran
 return 1
+go

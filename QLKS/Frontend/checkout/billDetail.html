@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<head>  
+    <title>Chi tiết hóa đơn</title>
+    <meta charset="utf-8">
+    <!-- external -->
+    <link rel="stylesheet" href="./css/HoaDon.css"> 
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="./js/billDetail.js"> </script>
+</head>
+
+<body>
+  <div class="col-1-8">
+    <div class="controls" style="padding: 10pt 0 0 10pt">
+      <button type="button" onclick="location.href='/checkout/HoaDon.html'" >Quay về</button>
+    </div>          
+  </div>
+  <h2 class="heading" style="font-weight: bold; padding-top: 50pt"></h2>
+    <form action="" >
+        <!--  General -->
+        <div class="form-group">
+          <h2 class="heading" style="font-weight: bold;">Thông tin hóa đơn</h2>
+          <div class="grid">
+            <div class="col-1-2">
+              <div class="controls" style="padding-right: 10px;" >
+                <input type="text" id="MAPDK" class="floatLabel" name="MAPDK" readonly>  
+                <label for="MAPDK">Mã PĐK</label>
+              </div>         
+            </div>
+            <div class="col-1-2">
+              <div class="controls">
+                  <input type="text" id="MANV" class="floatLabel" name="MANV" readonly>
+                  <label for="MANV">Mã nhân viên</label>
+              </div>         
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col-1-2">
+              <div class="controls" style="padding-right: 10px;" >
+                <input type="text" id="HOTEN" class="floatLabel" name="HOTEN" readonly>
+                <label for="HOTEN">Nhân viên</label>
+              </div>         
+            </div>
+            <div class="col-1-2">
+              <div class="controls">
+                <input type="text" id="NGAYLAP" class="floatLabel" name="NGAYLAP" readonly>
+                <label for="NGAYLAP">Ngày lập</label>
+              </div>         
+            </div>
+          </div>
+          <h2 class="heading" style="font-weight: bold;">Thông tin đặt phòng</h2>
+          <div class="grid">
+            <div class="col-1-2">
+              <div class="controls"  style="padding-right: 10px;" >
+               <input type="text" id="MAKH" class="floatLabel" name="MAKH" readonly>
+               <label for="MAKH">Mã khách hàng</label>
+              </div>          
+            </div>
+            <div class="col-1-2">
+              <div class="controls">
+               <input type="text" id="TENKH" class="floatLabel" name="TENKH" readonly>
+               <label for="TENKH">Tên khách hàng</label>
+              </div>          
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col-1-2">
+              <div class="controls" style="padding-right: 10px;" >
+                <input type="text" id="CCCD" class="floatLabel" name="CCCD" readonly>  
+                <label for="CCCD">CCCD</label>
+              </div>         
+            </div>
+            <div class="col-1-2">
+              <div class="controls">
+                  <input type="text" id="EMAIL" class="floatLabel" name="EMAIL" readonly>
+                  <label for="EMAIL">Email</label>
+              </div>         
+            </div>
+          </div>
+          <div class="grid">
+            <div class="col-1-2">
+              <div class="controls" style="padding-right: 10px;" >
+                <input type="text" id="SDT" class="floatLabel" name="SDT" readonly>
+                <label for="SDT">Số điện thoại</label>
+              </div>         
+            </div>
+            <div class="col-1-2">
+              <div class="controls">
+                <input type="text" id="DIACHI" class="floatLabel" name="DIACHI" readonly>
+                <label for="DIACHI">Địa chỉ</label>
+              </div>         
+            </div>
+          </div>
+            
+            <div class="grid">
+              <div class="col-1-2">
+                <div class="controls" style="padding-right: 10px;" >
+                  <input type="text" id="TENDOAN" class="floatLabel" name="TENDOAN" readonly>
+                  <label for="TENDOAN">Tên đoàn</label>
+                </div>         
+              </div>
+              <div class="col-1-2">
+                <div class="controls">
+                    <input type="text" id="SOLUONG" class="floatLabel" name="SOLUONG" readonly>
+                    <label for="SOLUONG">Số người</label>
+                </div>         
+              </div>
+            </div>
+            <div class="grid">
+              <div class="col-1-2">
+                <div class="controls" style="padding-right: 10px;" >
+                  <input type="text" id="FAX" class="floatLabel" name="FAX" readonly>
+                  <label for="FAX">Fax</label>
+                </div>
+              </div> 
+                <!-- <div class="col-1-2">
+                  <div class="controls">
+                    <input type="text" id="group" class="floatLabel" name="group" readonly>
+                    <label for="group">Tên đoàn</label>
+                  </div>          
+                </div> -->
+            </div>
+            <div class="grid">  
+              <div class="col-1-2 col-1-2-sm" style="padding-right: 10px;" >
+                <div class="controls">
+                    <i class="fa fa-sort"></i>
+                    <input type="text" id="LOAIPHONG" class="floatLabel" name="LOAIPHONG" readonly>
+                    <label for="LOAIPHONG">Loại phòng</label>
+                </div>     
+              </div>
+  
+              <div class="col-1-2 col-1-2-sm">
+                <div class="controls">
+                  <i class="fa fa-sort"></i>
+                  <input type="text" id="SOPHONG" class="floatLabel" name="SOPHONG" readonly>
+                  <label for="SOPHONG"><i class="fa fa-home"></i>&nbsp;&nbsp;Số phòng</label>
+                </div>     
+              </div>
+             </div>
+            <div class="grid">
+              <div class="col-1-3 col-1-3-sm" style="padding-right: 10px;" >
+                  <div class="controls">
+                  <input type="date" id="NGAYDEN" class="floatLabel" name="NGAYDEN" value="<?php echo date('Y-m-d'); ?>" readonly>
+                  <label for="NGAYDEN" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đến</label>
+                  </div>      
+              </div>
+              <div class="col-1-3 col-1-3-sm"  style="padding-right: 10px;" >
+                  <div class="controls">
+                  <input type="date" id="NGAYDI" class="floatLabel" name="NGAYDI" value="<?php echo date('Y-m-d'); ?>" readonly>
+                  <label for="NGAYDI" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đi</label>
+                  </div>      
+              </div>
+              <div class="col-1-3 col-1-3-sm">
+                  <div class="controls">
+                  <i class="fa fa-sort"></i>
+                  <input type="text" id="SODEMLUUTRU" class="floatLabel" name="SODEMLUUTRU" readonly>
+                  <label for="SODEMLUUTRU"><i class="fa fa-male"></i>&nbsp;&nbsp;Số ngày</label>
+                  </div>      
+              </div>
+            </div>
+            
+            <div class="controls">
+              <input type="text" id="NOTE" class="floatLabel" name="NOTE" readonly>
+              <label for="NOTE">Yêu cầu</label>
+            </div>
+
+            <div class="controls" style="text-align: right">
+              <input type="text" id="THANHTIEN" class="floatLabel" name="THANHTIEN" readonly>
+              <label for="THANHTIEN">Thành tiền</label>
+            </div>
+
+            <div class="grid">
+              <div class="col-1-2">
+                <div class="controls" style="padding-right: 10px;" >
+                  <button type="button" value="edit" >Chỉnh sửa</button>
+                </div>
+              </div> 
+              <div class="col-1-2">
+                <div class="controls">
+                  <button type="button" value="pay" >Thanh toán</button>
+                </div>          
+              </div>
+            </div> 
+        </div>
+    </form>
+</body>

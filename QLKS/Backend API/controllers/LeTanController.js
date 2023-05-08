@@ -35,10 +35,10 @@ const suitcaseTrans = async (req, res, next) => {
 
 
 
-//XEM DANH SÁCH PHÒNG
-const DSPhong = async (req, res, next) => {
+//XEM DANH SÁCH HÓA ĐƠN
+const DSHDP = async (req, res, next) => {
     try {
-        const list = await LeTanData.DSphong();
+        const list = await LeTanData.DSHDP();
         res.send(list);        
     } catch (error) {
         res.status(400).send(error.message);
@@ -46,11 +46,11 @@ const DSPhong = async (req, res, next) => {
 }
 
 
-//Tìm phòng 
-const TimPhong = async (req, res, next) => {
+//Tìm hóa đơn 
+const HoaDon = async (req, res, next) => {
     try {
         const contractNum = req.params.id;
-        const list = await LeTanData.Timphong(contractNum);
+        const list = await LeTanData.HoaDon(contractNum);
         res.send(list);
     } catch (error) {
         res.status(400).send(error.message);
@@ -60,10 +60,10 @@ const TimPhong = async (req, res, next) => {
 
 
 //XEM DANH SÁCH DV ĐĂNG KÝ
-const DSDVDky = async (req, res, next) => {
+const updateBill = async (req, res, next) => {
     try {
         const staffId = req.params.id;
-        const list = await LeTanData.DSDVDKy(staffId);
+        const list = await LeTanData.updateBill(staffId);
         res.send(list);
     } catch (error) {
         res.status(400).send(error.message);
@@ -73,10 +73,10 @@ const DSDVDky = async (req, res, next) => {
 
 
 //DANH SÁCH HÓA ĐƠN
-const DSHoaDon = async (req, res, next) => {
+const deleteBill = async (req, res, next) => {
     try {
         const staffId = req.params.id;
-        const list = await LeTanData.DSHoaDon(staffId);
+        const list = await LeTanData.deleteBill(staffId);
         res.send(list);
     } catch (error) {
         res.status(400).send(error.message);
@@ -88,5 +88,5 @@ const DSHoaDon = async (req, res, next) => {
 
 module.exports = {
     bookRoomList, detailRoom, suitcaseTrans,
-    DSPhong,TimPhong,DSDVDky, DSHoaDon
+    DSHDP, HoaDon, updateBill, deleteBill
 }

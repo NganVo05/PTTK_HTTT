@@ -49,67 +49,83 @@ const suitcaseToTrans = async (data) => {
 
 
 
-//XEM DANH SÁCH PHÒNG
-const DSphong = async () => {
+//XEM DANH SÁCH HÓA ĐƠN
+const DSHDP = async () => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
-        const list = await pool.request().query(sqlQueries.DSPhongTra);
+        const list = await pool.request().query(sqlQueries.DSHDP);
         return list.recordset;
     } catch (error) {
         console.log(error.message);
     }
 }
 
-//Tìm phòng
-const Timphong = async(contractNum) => {
+//TÌM HÓA ĐƠN
+const HoaDon = async(bookingID) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
         const list = await pool.request()
-                            .input('tukhoa', sql.Char(15),contractNum)
-                            .query(sqlQueries.TimPhong);
+                            .input('MAPDK', sql.Char(15),bookingID)
+                            .query(sqlQueries.HoaDon);
+        console.log(list.recordset);
         return list.recordset;  
     } catch (error) {
         return error.message;
     }
 }
 
-
-//XEM DANH SÁCH DỊCH VỤ ĐĂNG KÝ
-const DSDVDKy = async(staffID) => {
+//CẬP NHẬT HÓA ĐƠN
+const updateBill = async(data) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
         const staff = await pool.request()
-                            .input('makh', sql.Char(15), staffID)
-                            .query(sqlQueries.DanhSachDVDK);
+                            .input('MAPDK', sql.VarChar(15), data.MAPDK)
+                            .input('PTTT', sql.NVarChar(30), data.PTTT)
+                            .input('TINHTRANG', sql.VarChar(15), data.TINHTRANG)
+                            .input('NOTE', sql.VarChar(50), data.NOTE)
+                            .query(sqlQueries.updateBill);
         return staff.recordset;
     } catch (error) {
         return error.message;
     }
 }
 
-
-
-//XEM HÓA ĐƠN
-const DSHoaDon = async(staffID) => {
+//XÓA HÓA ĐƠN
+const deleteBill = async(bookingID) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
         const staff = await pool.request()
-                            .input('makh', sql.Char(15), staffID)
-                            .query(sqlQueries.HoaDon);
+                            .input('MAPDK', sql.Char(15), bookingID)
+                            .query(sqlQueries.deleteBill);
         return staff.recordset;
     } catch (error) {
         return error.message;
     }
 }
 
+//CHI TIẾT HÓA ĐƠN
+const detailBill = async(bookingID) => {
+    try {
+        let pool = await sql.connect(config.sql);
+        const sqlQueries = await utils.loadSqlQueries('LeTan');
+        const staff = await pool.request()
+                            .input('MAPDK', sql.Char(15), bookingID)
+                            .query(sqlQueries.detailBill);
+        // console.log(staff.recordset[0]);
+        // console.log(staff.recordset[1]);
+        return staff.recordsets;
+    } catch (error) {
+        return error.message;
+    }
+}
 
 
 
 module.exports = {
     BookList, detailBookedRoom, suitcaseToTrans,
-    DSphong, Timphong, DSDVDKy, DSHoaDon
+    DSHDP, HoaDon, updateBill, deleteBill, detailBill
 }

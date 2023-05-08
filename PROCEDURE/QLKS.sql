@@ -892,7 +892,7 @@ create table HOADONPHONG (
    MAHD                 varchar(15)          not null,
    NGAY_LAP             datetime             not null,
    THANHTIEN            float                not null,
-   PTTT                 nvarchar(20)          not null,
+   PTTT                 nvarchar(20)          null,
    TINHTRANG            nvarchar(20)          not null,
    NOTE                 nvarchar(50)          null,
    constraint PK_HOADONPHONG primary key (MAHD)
@@ -1745,14 +1745,14 @@ INSERT [dbo].[HOADONDV] ([MAHD], [MAKH], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHT
 INSERT [dbo].[HOADONDV] ([MAHD], [MAKH], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [MANV], [MAKG], [MADV], [MAPDK], [STT], [NOTE]) VALUES (N'HD992727', N'KH606532', CAST(N'2023-06-01T08:28:53.550' AS DateTime), 400000, N'Tiền mặt', N'Ðã trả trước 30%', N'NV52', N'KG07', N'DV08', N'PDK632229', 71, N'et quad venit. nomen')
 GO
  
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK713728', N'NV85', N'KH739842', N'HD078065', CAST(N'2023-05-01T05:31:37.740' AS DateTime), 750000, N'Tiền mặt', N'Ðã trả trước 30%', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK405906', N'NV14', N'KH290647', N'HD214398', CAST(N'2023-04-22T11:08:28.400' AS DateTime), 550000, N'Tiền mặt', N'Ðã thanh toán', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK576861', N'NV67', N'KH628311', N'HD293126', CAST(N'2023-04-18T16:24:02.190' AS DateTime), 250000, N'Ví Momo', N'Chưa thanh toán', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK773095', N'NV30', N'KH499070', N'HD387995', CAST(N'2023-05-13T20:42:10.250' AS DateTime), 850000, N'Internet banking', N'Chưa thanh toán', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK405906', N'NV15', N'KH290647', N'HD405086', CAST(N'2023-06-18T10:32:34.950' AS DateTime), 1050000, N'Ví Momo', N'Chưa thanh toán', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK386502', N'NV38', N'KH533624', N'HD531163', CAST(N'2023-04-13T14:58:55.580' AS DateTime), 650000, N'Ví Momo', N'Ðã trả trước 30%', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK386502', N'NV38', N'KH533624', N'HD625527', CAST(N'2023-05-01T09:51:04.320' AS DateTime), 450000, N'Ví Momo', N'Chưa thanh toán', N'esset quad estum.')
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK880470', N'NV47', N'KH606532', N'HD655487', CAST(N'2023-05-16T23:15:15.040' AS DateTime), 150000, N'Internet banking', N'Chưa thanh toán', N'esset pladior Sed')
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK880470', N'NV52', N'KH606532', N'HD656040', CAST(N'2023-06-14T14:39:51.470' AS DateTime), 350000, N'Tiền mặt', N'Chưa thanh toán', NULL)
-INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK713728', N'NV93', N'KH739842', N'HD915668', CAST(N'2023-04-23T10:41:27.750' AS DateTime), 950000, N'Internet banking', N'Ðã thanh toán', NULL)
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK713728', N'NV85', N'KH739842', N'HD078065', CAST(N'2023-05-01T05:31:37.740' AS DateTime), 750000, N'Internet Banking', N'Chưa thanh toán', N'eudis linguens esset quad transit. plurissimum et')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK997915', N'NV14', N'KH290647', N'HD214398', CAST(N'2023-04-22T11:08:28.400' AS DateTime), 550000, N'Internet Banking', N'Thanh toán 30%', N'in egreddior quo estum. vantis. gravum vantis.')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK576861', N'NV67', N'KH628311', N'HD293126', CAST(N'2023-04-18T16:24:02.190' AS DateTime), 250000, N'Ví Momo', N'Thanh toán 30%', N'regit, vantis. non et fecit. quorum delerium. si')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK405906', N'NV30', N'KH499070', N'HD387995', CAST(N'2023-05-13T20:42:10.250' AS DateTime), 850000, N'Tiền mặt', N'Đã thanh toán', N'Et in plorum et eudis parte pars plorum nomen')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK307709', N'NV15', N'KH290647', N'HD405086', CAST(N'2023-06-18T10:32:34.950' AS DateTime), 1050000, N'Ví Momo', N'Chưa thanh toán', N'et si novum gravis Tam et vantis. et quad')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK773095', N'NV38', N'KH533624', N'HD531163', CAST(N'2023-04-13T14:58:55.580' AS DateTime), 650000, N'Internet Banking', N'Đã thanh toán', N'cognitio, linguens essit. gravum Pro e pars quorum')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK291457', N'NV38', N'KH533624', N'HD625527', CAST(N'2023-05-01T09:51:04.320' AS DateTime), 450000, N'Internet Banking', N'Đã thanh toán', N'linguens non non glavans egreddior Quad bono si si')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK880470', N'NV47', N'KH606532', N'HD655487', CAST(N'2023-05-16T23:15:15.040' AS DateTime), 150000, N'Tiền mặt', N'Thanh toán 30%', N'Sed vobis et quo quo, vobis funem. quo homo,')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK625962', N'NV52', N'KH606532', N'HD656040', CAST(N'2023-06-14T14:39:51.470' AS DateTime), 350000, N'Internet Banking', N'Chưa thanh toán', N'imaginator travissimantor estis regit, nomen')
+INSERT [dbo].[HOADONPHONG] ([MAPDK], [MANV], [MAKH], [MAHD], [NGAY_LAP], [THANHTIEN], [PTTT], [TINHTRANG], [NOTE]) VALUES (N'PDK386502', N'NV93', N'KH739842', N'HD915668', CAST(N'2023-04-23T10:41:27.750' AS DateTime), 950000, N'Ví Momo', N'Chưa thanh toán', N'sed estum. vantis. et novum glavans plorum quis')
 GO

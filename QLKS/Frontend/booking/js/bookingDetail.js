@@ -99,6 +99,8 @@ $(document).ready(function() {
     console.log(customerID);
     var reservationID = 'PDK' + generateUniqueID(bookingDetail);
     console.log(reservationID);
+    var billID = 'HD' + generateUniqueID(bookingDetail);
+    console.log(billID);
     var customerInfor = {};
     customerInfor.MAKH = customerID;
     customerInfor.TENKH = bookingDetail.name;
@@ -114,7 +116,15 @@ $(document).ready(function() {
     var reservationInfor = {};
     reservationInfor.MAPDK = reservationID;
     reservationInfor.MAKH = customerID;
-    reservationInfor.NGAYLAP = new Date();
+    var date = new Date();
+    var options = { timeZone: 'Asia/Ho_Chi_Minh' };
+    // var formattedTime = date.toLocaleTimeString('vi-VN', options);
+    var formattedDate = date.toLocaleString('vi-VN', options);
+    // var formattedDateTime = formattedTime + ' ' + formattedDate;
+    // console.log(formattedDateTime);
+    // console.log(formattedTime);
+    console.log(formattedDate);
+    reservationInfor.NGAYLAP = formattedDate;
     reservationInfor.MANV = "NV01"; 
     reservationInfor.NGAYDEN = bookingDetail.arrive;
     reservationInfor.NGAYDI = bookingDetail.depart;
@@ -123,6 +133,8 @@ $(document).ready(function() {
     reservationInfor.TYPE = toValue[bookingDetail.type];
     reservationInfor.SOPHONG = bookingDetail.room;
     reservationInfor.NOTE = bookingDetail.comment;
+    reservationInfor.MAHD = billID;
+
     console.log("Reservation Info: ", JSON.stringify(reservationInfor));
     
     $.ajax({
@@ -138,7 +150,7 @@ $(document).ready(function() {
           data: JSON.stringify(reservationInfor),
           contentType: "application/json",
           success: function(data) {
-            // console.log("Message: ", data[0].Message);
+            console.log("Message: ", data[0].Message);
             alert("Message: " + data[0].Message);
             localStorage.removeItem('bookingDetail');
             localStorage.setItem('reservationID', JSON.stringify(reservationID));
@@ -154,8 +166,8 @@ $(document).ready(function() {
       }
     });
 
-    //   // console.log(JSON.parse(localStorage.getItem('bookingDetail'))); // for debugging purposes
-    //   window.location.href = "";
+      // console.log(JSON.parse(localStorage.getItem('bookingDetail'))); // for debugging purposes
+      // window.location.href = "/booking/rating.html";
   });
   
 });
