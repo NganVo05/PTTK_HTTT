@@ -83,6 +83,7 @@ begin
 end
 GO
 
+--select * from PHIEUVCHL
 
 
 ----CẬP NHẬT TÌNH TRẠNG VẬN CHUYỂN HÀNH LÝ------------
