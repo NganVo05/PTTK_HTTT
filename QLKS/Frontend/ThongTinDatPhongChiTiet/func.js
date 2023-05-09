@@ -168,6 +168,7 @@ function returnMenu(data){
     // console.log(data[0][0].NGAYLAP)
     btn_DangKy.onclick = function(){
         addSuitecase(data[0][0].MAKH, data[0][0].NGAYLAP)
+        alert('Dang ky dich vu van chuyen hanh ly thanh cong')
     }
     btn_DangKy.appendChild(document.createTextNode("Đăng ký"))
     title.appendChild(btn_DangKy)

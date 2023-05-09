@@ -58,8 +58,8 @@ $(document).ready(function() {
                                     .text("Edit")
                                     .click(function(){
                                         var billDetail = {};
-                                        billDetail.MAHD = rowData.MAHD;
-                                        billDetail.MANV = rowData.MANV;
+                                        billDetail.TINHTRANG = rowData.TINHTRANG;
+                                        billDetail.PTTT = rowData.PTTT;
                                         billDetail.MAPDK = rowData.MAPDK;
                                         console.log("Bill detail: ",billDetail);
                                         localStorage.removeItem('billDetail');

@@ -32,7 +32,7 @@ router.get('/staff/HoaDon', LeTanController.DSHDP);
 router.get('/staff/HoaDon/:id', LeTanController.HoaDon);
 router.post('/staff/updateBill', LeTanController.updateBill);
 router.delete('/staff/deleteBill/:id', LeTanController.deleteBill);
-router.get('/staff/detailBill/:id', LeTanController.deleteBill);
+router.get('/staff/detailBill/:id', LeTanController.detailBill);
 
 // ----------------Ban SPDV--------------
 router.get('/getlistservtickets', BANSPDVControll.BANSPDV_XemPhieuDatSP_DV);

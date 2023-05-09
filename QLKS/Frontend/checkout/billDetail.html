@@ -142,13 +142,13 @@
             <div class="grid">
               <div class="col-1-3 col-1-3-sm" style="padding-right: 10px;" >
                   <div class="controls">
-                  <input type="date" id="NGAYDEN" class="floatLabel" name="NGAYDEN" value="<?php echo date('Y-m-d'); ?>" readonly>
+                  <input type="text" id="NGAYDEN" class="floatLabel" name="NGAYDEN" value="<?php echo date('Y-m-d'); ?>" readonly>
                   <label for="NGAYDEN" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đến</label>
                   </div>      
               </div>
               <div class="col-1-3 col-1-3-sm"  style="padding-right: 10px;" >
                   <div class="controls">
-                  <input type="date" id="NGAYDI" class="floatLabel" name="NGAYDI" value="<?php echo date('Y-m-d'); ?>" readonly>
+                  <input type="text" id="NGAYDI" class="floatLabel" name="NGAYDI" value="<?php echo date('Y-m-d'); ?>" readonly>
                   <label for="NGAYDI" class="label-date"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày đi</label>
                   </div>      
               </div>
@@ -166,6 +166,22 @@
               <label for="NOTE">Yêu cầu</label>
             </div>
 
+            <div class="grid">
+              <div class="col-1-2 col-1-2-sm" style="padding-right: 10px;" >
+                  <div class="controls">
+                    <input type="text" id="PTTT" class="floatLabel" name="PTTT" readonly>
+                    <label for="PTTT">Phương thức thanh toán</label>
+                  </div>      
+              </div>
+  
+              <div class="col-1-2 col-1-2-sm" >
+                <div class="controls">
+                    <input type="text" id="TINHTRANG" class="floatLabel" name="TINHTRANG" readonly>
+                    <label for="TINHTRANG">Tình trạng</label>
+                </div>     
+              </div>              
+             </div>
+
             <div class="controls" style="text-align: right">
               <input type="text" id="THANHTIEN" class="floatLabel" name="THANHTIEN" readonly>
               <label for="THANHTIEN">Thành tiền</label>
@@ -179,7 +195,7 @@
               </div> 
               <div class="col-1-2">
                 <div class="controls">
-                  <button type="button" value="pay" >Thanh toán</button>
+                  <button type="button" value="commit" disabled>Xác nhận</button>
                 </div>          
               </div>
             </div> 

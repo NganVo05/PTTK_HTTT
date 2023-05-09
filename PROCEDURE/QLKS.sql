@@ -892,8 +892,8 @@ create table HOADONPHONG (
    MAHD                 varchar(15)          not null,
    NGAY_LAP             datetime             not null,
    THANHTIEN            float                not null,
-   PTTT                 nvarchar(20)          null,
-   TINHTRANG            nvarchar(20)          not null,
+   PTTT                 nvarchar(30)          null,
+   TINHTRANG            nvarchar(50)          not null,
    NOTE                 nvarchar(50)          null,
    constraint PK_HOADONPHONG primary key (MAHD)
 )

@@ -62,7 +62,7 @@ const HoaDon = async (req, res, next) => {
 //XEM DANH SÁCH DV ĐĂNG KÝ
 const updateBill = async (req, res, next) => {
     try {
-        const staffId = req.params.id;
+        const staffId = req.body;
         const list = await LeTanData.updateBill(staffId);
         res.send(list);
     } catch (error) {
@@ -72,7 +72,7 @@ const updateBill = async (req, res, next) => {
 
 
 
-//DANH SÁCH HÓA ĐƠN
+//XÓA HÓA ĐƠN
 const deleteBill = async (req, res, next) => {
     try {
         const staffId = req.params.id;
@@ -83,10 +83,20 @@ const deleteBill = async (req, res, next) => {
     }
 }
 
+//XÓA HÓA ĐƠN
+const detailBill = async (req, res, next) => {
+    try {
+        const staffId = req.params.id;
+        const list = await LeTanData.detailBill(staffId);
+        res.send(list);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
 
 
 
 module.exports = {
     bookRoomList, detailRoom, suitcaseTrans,
-    DSHDP, HoaDon, updateBill, deleteBill
+    DSHDP, HoaDon, updateBill, deleteBill, detailBill
 }

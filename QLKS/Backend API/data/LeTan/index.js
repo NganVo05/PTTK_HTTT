@@ -81,12 +81,14 @@ const updateBill = async(data) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
+        console.log(data.NOTE);
         const staff = await pool.request()
                             .input('MAPDK', sql.VarChar(15), data.MAPDK)
                             .input('PTTT', sql.NVarChar(30), data.PTTT)
-                            .input('TINHTRANG', sql.VarChar(15), data.TINHTRANG)
-                            .input('NOTE', sql.VarChar(50), data.NOTE)
+                            .input('TINHTRANG', sql.NVarChar(50), data.TINHTRANG)
+                            .input('NOTE', sql.NVarChar(50), data.NOTE)
                             .query(sqlQueries.updateBill);
+        console.log(staff.recordset);
         return staff.recordset;
     } catch (error) {
         return error.message;
@@ -115,9 +117,8 @@ const detailBill = async(bookingID) => {
         const staff = await pool.request()
                             .input('MAPDK', sql.Char(15), bookingID)
                             .query(sqlQueries.detailBill);
-        // console.log(staff.recordset[0]);
-        // console.log(staff.recordset[1]);
-        return staff.recordsets;
+        console.log(staff.recordset);
+        return staff.recordset;
     } catch (error) {
         return error.message;
     }
