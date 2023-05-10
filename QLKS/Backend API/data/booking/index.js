@@ -43,7 +43,7 @@ const bookRoom = async(data) => {
     try {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('booking');
-        // console.log(data.NGAYLAP);
+        console.log(data.NGAYLAP);
         // console.log(data);
         const room = await pool.request()
                             .input('MAPDK', sql.VarChar(15), data.MAPDK)

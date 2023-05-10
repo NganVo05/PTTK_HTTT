@@ -119,12 +119,12 @@ $(document).ready(function() {
     var date = new Date();
     var options = { timeZone: 'Asia/Ho_Chi_Minh' };
     // var formattedTime = date.toLocaleTimeString('vi-VN', options);
-    var formattedDate = date.toLocaleString('vi-VN', options);
+    // var formattedDate = date.toLocaleString('vi-VN', options);
     // var formattedDateTime = formattedTime + ' ' + formattedDate;
     // console.log(formattedDateTime);
     // console.log(formattedTime);
-    console.log(formattedDate);
-    reservationInfor.NGAYLAP = formattedDate;
+    // console.log(formattedDate);
+    reservationInfor.NGAYLAP = new Date();
     reservationInfor.MANV = "NV01"; 
     reservationInfor.NGAYDEN = bookingDetail.arrive;
     reservationInfor.NGAYDI = bookingDetail.depart;

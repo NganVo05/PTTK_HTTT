@@ -92,6 +92,20 @@ function returnMenu(data){
     const header_detail = document.getElementById("header-detail")
     //tên 5 trường đầu tiên của mục header
     var header_keys = Object.keys(data[0][0])
+    // console.log(data);
+    $.each(data[0], function(index, cell){
+        var date = new Date(cell.NGAYLAP);
+        var options = { timeZone: 'Asia/Ho_Chi_Minh' };
+        var formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYLAP = formattedDate; 
+        // console.log(cell.NGAYLAP);
+        date = new Date(cell.NGAYDEN);
+        formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYDEN = formattedDate; 
+        date = new Date(cell.NGAYDI);
+        formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYDI = formattedDate; 
+    });
     
     //giá trị của 5 trường đó
     var header_value = data[0][0]

@@ -13,12 +13,14 @@ begin
 	select C.MAPHONG, P.MAKH,P.NGAYLAP,P.NGAYDEN,P.NGAYDI from PHIEUDATPHONG P
 		JOIN CHITIETDATPHONG C
 		ON P.MAPDK = C.MAPDK
+		order by ngaylap desc;
 end
 GO
 
 
 
---exec getBookListRoom 'NV38'
+--exec getBookListRoom
+--select * from phieudatphong order by ngaylap desc;
 
 ---DANH SÁCH HÀNH LÝ CẦN VẬN CHUYỂN----
 
@@ -44,9 +46,9 @@ begin
 	ORDER BY P.NGAYLAP DESC
 end
 GO
-SELECT * FROM HANHLI HL
-SELECT * FROM PHIEUVCHL
-exec getSuitcaseList
+--SELECT * FROM HANHLI HL
+--SELECT * FROM PHIEUVCHL
+--exec getSuitcaseList
 --SELECT * FROM HANHLI --KHÔNG ĐĂNG KÝ, TỰ VC
 --SELECT * FROM PHIEUVCHL --ĐĂNG KÝ VẬN CHUYỂN HL NHƯNG BELLMAN CHƯA VC 
 --WHERE TINHTRANG = N'CHỜ VẬN CHUYỂN'
@@ -82,9 +84,13 @@ begin
 	insert into PHIEUVCHL values(@mapdk, @makh, @ngaylap, @manv,@soluong, N'CHỜ VẬN CHUYỂN')
 end
 GO
-select * from CHITIETDATPHONG
-select * from PHIEUDATPHONG
+
+--select * from CHITIETDATPHONG
+--select * from PHIEUDATPHONG
 --select * from PHIEUVCHL
+
+
+--select * from PHIEUVCHL order by ngaylap asc
 
 
 ----CẬP NHẬT TÌNH TRẠNG VẬN CHUYỂN HÀNH LÝ------------

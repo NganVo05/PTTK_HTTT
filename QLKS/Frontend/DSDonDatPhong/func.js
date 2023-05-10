@@ -12,19 +12,35 @@ function chitietDatPhong(maphong){
 function createResponedDisplay(data){
     //EDIT LIST 
     const divcontainer = document.getElementById("list-row-container")
- 
+    
+    $.each(data, function(index, cell){
+        var date = new Date(cell.NGAYLAP);
+        var options = { timeZone: 'Asia/Ho_Chi_Minh' };
+        var formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYLAP = formattedDate; 
+        // console.log(cell.NGAYLAP);
+        date = new Date(cell.NGAYDEN);
+        formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYDEN = formattedDate; 
+        date = new Date(cell.NGAYDI);
+        formattedDate = date.toLocaleString('vi-VN', options);
+        cell.NGAYDI = formattedDate; 
+    });
+
     for(let i = 0; i < data.length; i++){
         
         const divcard = document.createElement("div")
         divcard.setAttribute("id", "list-row")
         const keys = Object.keys(data[i])
         const menuItem = data[i]
+
+        
         
         for (let j = 0; j < keys.length; j++) {
             const content = document.createElement('label')
             content.setAttribute("id", "content")
             content.appendChild(document.createTextNode(menuItem[keys[j]]))
-            console.log(menuItem[keys[j]])
+            // console.log(menuItem[keys[j]])
             divcard.appendChild(content)
         }
         //tạo button
