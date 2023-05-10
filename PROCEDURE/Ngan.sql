@@ -37,13 +37,8 @@ GO
 CREATE
 --ALTER
 proc getSuitcaseList
-	@manv char(15)
 as
 begin
-	if not exists(select * from NHANVIEN where MANV = @manv)
-	begin
-		select 'NV Is Not Found' AS 'ERROR'
-	end
 	SELECT DISTINCT HL.MAPHONG, KH.TENKH,P.NGAYLAP, P.MANV, P.MAPDK
 	FROM PHIEUVCHL P 
 	join THONGTINDOAN KH on KH.MAKH = P.MAKH

@@ -9,7 +9,6 @@ const suitcaseList = async(manv) => {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('Bellman');
         const bookList = await pool.request()
-                            .input('MANV', sql.Char(15), manv)
                             .query(sqlQueries.getSuitcaseList);
         return bookList.recordset;
     } catch (error) {

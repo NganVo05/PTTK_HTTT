@@ -1,1 +1,1 @@
-EXEC [dbo].[getSuitcaseList] 'NV38'
+EXEC [dbo].[getSuitcaseList]
