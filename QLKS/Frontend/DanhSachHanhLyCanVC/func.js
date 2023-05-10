@@ -16,17 +16,6 @@ async function updateTinhTrangHanhLy(mapdk){
         "Content-Type": "application/json",
     },
     });
-    const json = await response.json();
-    // console.log('Return :',json)
-    //check error
-    let keys = Object.keys(json[0])
-    if (keys[0] === "ERROR"){
-        let data = JSON.stringify(json[0].ERROR)
-        alert(keys[0] + ' : ' + data)
-    }
-    else {
-        alert(json[0].RESULT)
-    }
 }
 
 function createResponedDisplay(data){

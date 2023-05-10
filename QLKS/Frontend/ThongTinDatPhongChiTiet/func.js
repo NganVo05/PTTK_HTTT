@@ -53,9 +53,9 @@ async function addSuitecase(makh,ngaylapks){
     var today = new Date()
     var ngaylap = today.toISOString();
     var str = makh + ngaylap
- 
+    var hl_str = makh + ngaylapks
     var mapdk = 'PDK' + str.hashCodeForMA()
-
+    var mahl = 'HL' + hl_str.hashCodeForMA()
     console.log(mapdk)
     console.log(ngaylap)
 
@@ -65,7 +65,8 @@ async function addSuitecase(makh,ngaylapks){
         "MAPDK": mapdk,
         "MAKH": makh,
         "NGAYLAP": ngaylapks,
-        "SOLUONG": soluong.value
+        "SOLUONG": soluong.value,
+        "MAHL":mahl
     }
     const response = await fetch(url_addSuite, {
         method: "POST",
@@ -74,15 +75,15 @@ async function addSuitecase(makh,ngaylapks){
             "Content-Type": "application/json",
         },
     });
-    console.log(response)
-    const data = await response.json();
+    // console.log(response)
+    // const data = await response.json();
     
-    if(Object.keys(data) == 'ERROR'){
-        alert("ERROR: " + data.ERROR)
-    }
-    else{
-        alert("Add Successfully!")
-    }
+    // if(Object.keys(data) == 'ERROR'){
+    //     alert("ERROR: " + data.ERROR)
+    // }
+    // else{
+    //     alert("Add Successfully!")
+    // }
     // location.href = "manage_restaurants.html"
 }
 

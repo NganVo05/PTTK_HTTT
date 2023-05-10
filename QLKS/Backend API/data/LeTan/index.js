@@ -9,7 +9,7 @@ const BookList = async(manv) => {
         let pool = await sql.connect(config.sql);
         const sqlQueries = await utils.loadSqlQueries('LeTan');
         const bookList = await pool.request()
-                            .input('MANV', sql.Char(15), manv)
+                            
                             .query(sqlQueries.getBookListRoom);
         return bookList.recordset;
     } catch (error) {
@@ -38,8 +38,8 @@ const suitcaseToTrans = async (data) => {
                             .input('mapdk'      , sql.VarChar(15), data.MAPDK)
                             .input('makh'       , sql.VarChar(15), data.MAKH)
                             .input('ngaylap'    , sql.DateTime, data.NGAYLAP)
-                            .input('manv'       , sql.VarChar(15), data.MANV)
                             .input('soluong'    , sql.Int, data.SOLUONG)
+                            .input('mahl'       , sql.VarChar(15), data.MAHL)
                             .query(sqlQueries.addSuitcaseNeedToTrans);                            
         return insert.recordset;
     } catch (error) {

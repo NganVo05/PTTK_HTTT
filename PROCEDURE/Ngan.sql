@@ -8,18 +8,15 @@ GO
 CREATE
 --ALTER
 proc getBookListRoom
-	@manv char(15)
 as
 begin
-	if not exists(select * from PHIEUDATPHONG where MANV = @manv)
-	begin
-		select 'NV Is Not Found' AS 'ERROR'
-	end
 	select C.MAPHONG, P.MAKH,P.NGAYLAP,P.NGAYDEN,P.NGAYDI from PHIEUDATPHONG P
 		JOIN CHITIETDATPHONG C
 		ON P.MAPDK = C.MAPDK
 end
 GO
+
+
 
 --exec getBookListRoom 'NV38'
 
@@ -47,7 +44,9 @@ begin
 	ORDER BY P.NGAYLAP DESC
 end
 GO
---exec getSuitcaseList 'NV38';
+SELECT * FROM HANHLI HL
+SELECT * FROM PHIEUVCHL
+exec getSuitcaseList
 --SELECT * FROM HANHLI --KHÔNG ĐĂNG KÝ, TỰ VC
 --SELECT * FROM PHIEUVCHL --ĐĂNG KÝ VẬN CHUYỂN HL NHƯNG BELLMAN CHƯA VC 
 --WHERE TINHTRANG = N'CHỜ VẬN CHUYỂN'
@@ -63,10 +62,11 @@ proc addSuitcaseNeedToTrans
 	@mapdk varchar(15),
 	@makh varchar(15),
 	@ngaylap datetime,
-	@soluong int
+	@soluong int,
+	@mahl varchar(15)
 as
 begin
-	declare @manv varchar(15)
+	declare @manv varchar(15), @maphong varchar(15)
 	set @ngaylap = getdate()
 	if exists(select * from PHIEUVCHL where MAPDK = @mapdk)
 	begin
@@ -74,10 +74,16 @@ begin
 	end
 	
 	set @manv = ( SELECT TOP 1 MANV FROM NHANVIEN WHERE BOPHAN = 'Bellman' ORDER BY NEWID() )
+
+	set @maphong = ( SELECT TOP 1 MAPHONG FROM CHITIETDATPHONG CT
+						join PHIEUDATPHONG P ON CT.MAPDK= P.MAPDK 
+						WHERE P.MAKH = @makh)
+	insert into HANHLI values(@mahl,@makh,@maphong)
 	insert into PHIEUVCHL values(@mapdk, @makh, @ngaylap, @manv,@soluong, N'CHỜ VẬN CHUYỂN')
 end
 GO
-
+select * from CHITIETDATPHONG
+select * from PHIEUDATPHONG
 --select * from PHIEUVCHL
 
 

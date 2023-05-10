@@ -1,1 +1,1 @@
-EXEC [dbo].[getBookListRoom] 'NV38'
+EXEC [dbo].[getBookListRoom]
