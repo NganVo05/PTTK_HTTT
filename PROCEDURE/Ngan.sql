@@ -13,10 +13,15 @@ begin
 	select C.MAPHONG, P.MAKH,P.NGAYLAP,P.NGAYDEN,P.NGAYDI from PHIEUDATPHONG P
 		JOIN CHITIETDATPHONG C
 		ON P.MAPDK = C.MAPDK
+		join HOADONPHONG H on H.MAPDK = P.MAPDK
+		where TINHTRANG != N'Đã thanh toán'
 		order by ngaylap desc;
 end
 GO
 
+select * from PHIEUDATPHONG
+select * from CHITIETDATPHONG
+select * from HOADONPHONG
 
 
 --exec getBookListRoom
