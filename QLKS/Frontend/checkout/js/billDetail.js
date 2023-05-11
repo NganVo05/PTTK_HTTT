@@ -90,6 +90,8 @@ $(document).ready(function() {
     billChange.PTTT = $('#PTTT').val();
     billChange.TINHTRANG = $('#TINHTRANG').val();
     billChange.NOTE = $('#NOTE').val();
+    billChange.NGAYLAP = new Date();
+
     console.log('Bill change: ', billChange);
 
     $.ajax({

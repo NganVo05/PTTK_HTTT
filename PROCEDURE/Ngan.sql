@@ -19,9 +19,9 @@ begin
 end
 GO
 
-select * from PHIEUDATPHONG
-select * from CHITIETDATPHONG
-select * from HOADONPHONG
+--select * from PHIEUDATPHONG
+--select * from CHITIETDATPHONG
+--select * from HOADONPHONG
 
 
 --exec getBookListRoom

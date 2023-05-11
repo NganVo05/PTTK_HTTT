@@ -32,6 +32,7 @@ $(document).ready(function() {
             var options = { timeZone: 'Asia/Ho_Chi_Minh' };
             var formattedDate = date.toLocaleString('vi-VN', options);
             cell.NGAY_LAP = formattedDate; 
+            // console.log(cell.MAPDK);
         });
         
         $.each(data, function(index, cell){
@@ -49,8 +50,8 @@ $(document).ready(function() {
       
         data.forEach(function(rowData, index) {
           var row = $("<tr></tr>");
-          row.append($("<td></td>").text(index + 1)); // add 'No.' value to the row
-          headers.slice(1).forEach(function(header) {
+          // row.append($("<td></td>").text(index + 1)); // add 'No.' value to the row
+          headers.forEach(function(header) {
             row.append($("<td></td>").text(rowData[header]));
           });
           row.append($("<td></td>").append($("<button></button>")

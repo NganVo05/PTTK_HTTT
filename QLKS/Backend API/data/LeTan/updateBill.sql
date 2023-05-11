@@ -1,1 +1,1 @@
-exec [dbo].[CapNhatHoaDonPhong] @MAPDK, @PTTT, @TINHTRANG, @NOTE
+exec [dbo].[CapNhatHoaDonPhong] @MAPDK, @PTTT, @TINHTRANG, @NOTE, @NGAYLAP

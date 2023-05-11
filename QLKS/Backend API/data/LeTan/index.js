@@ -87,6 +87,7 @@ const updateBill = async(data) => {
                             .input('PTTT', sql.NVarChar(30), data.PTTT)
                             .input('TINHTRANG', sql.NVarChar(50), data.TINHTRANG)
                             .input('NOTE', sql.NVarChar(50), data.NOTE)
+                            .input('NGAYLAP', sql.DateTime, data.NGAYLAP)
                             .query(sqlQueries.updateBill);
         console.log(staff.recordset);
         return staff.recordset;
