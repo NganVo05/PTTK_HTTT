@@ -1,6 +1,10 @@
 ﻿USE QLKS
 go
 
+Insert DICHVU values('DVBANSP','Bán SP')
+insert KHUNGGIODV values('KG00', '00:00:00', '00:00:00','NA',0)
+insert CHITIETDV values ('KG00','DVBANSP','50000')
+
 DROP PROC IF EXISTS BANSPDV_XemPhieuDatSP_DV 
 GO
 create 
